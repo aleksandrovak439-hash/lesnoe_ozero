@@ -183,6 +183,18 @@
             cursor: pointer;
             border: 2px solid var(--approved);
         }
+        .approved-photo-placeholder {
+            width: 100px;
+            height: 100px;
+            background: var(--approved);
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: 700;
+        }
         .approved-info {
             flex: 1;
         }
@@ -594,12 +606,64 @@
             font-size: 0.85rem;
         }
 
+        /* ========== ДЕСКТОПНАЯ ВЕРСИЯ (ПК) ========== */
+        @media (min-width: 641px) {
+            .approved-item {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+            .approved-photo img {
+                width: 100px;
+                height: 100px;
+            }
+        }
+
+        /* ========== МОБИЛЬНАЯ ВЕРСИЯ (телефоны) ========== */
         @media (max-width: 640px) {
             .series-grid { gap: 1rem; }
             .probe-photo img { width: 55px; height: 55px; }
             .modal-title { font-size: 1.3rem; }
-            .approved-item { flex-direction: column; align-items: center; text-align: center; }
-            .approved-info { text-align: center; }
+            
+            /* Утверждённые карточки на мобильных: фото слева, текст справа, компактно */
+            .approved-item {
+                flex-direction: row !important;
+                align-items: center !important;
+                text-align: left !important;
+                gap: 0.8rem;
+                padding: 0.8rem;
+            }
+            .approved-info {
+                text-align: left !important;
+            }
+            .approved-photo img {
+                width: 65px;
+                height: 65px;
+            }
+            .approved-photo-placeholder {
+                width: 65px;
+                height: 65px;
+                font-size: 1.5rem;
+            }
+            .approved-actor-name {
+                font-size: 0.95rem;
+                margin-bottom: 0.1rem;
+            }
+            .approved-details {
+                font-size: 0.7rem;
+                margin-bottom: 0.3rem;
+            }
+            .approved-contact-btn {
+                font-size: 0.65rem;
+                padding: 0.2rem 0.6rem;
+            }
+            .approved-role {
+                font-size: 0.6rem;
+                margin-bottom: 0.3rem;
+            }
+            .approved-list.expanded {
+                max-height: 600px;
+            }
+            
             .character-item { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
             .probe-card { flex-wrap: wrap; }
         }
@@ -721,14 +785,13 @@
             
             let html = '';
             for (const actor of APPROVED_ACTORS) {
-                // Путь к фото: photos/имя_файла.jpg
                 const photoPath = actor.photo;
                 
                 html += `
                     <div class="approved-item" data-id="${actor.id}">
                         <div class="approved-photo">
                             <img src="${photoPath}" alt="${actor.name}" data-photo="${photoPath}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="approved-photo-placeholder" style="display: none; width:100px;height:100px;background:var(--approved);border-radius:0.75rem;align-items:center;justify-content:center;color:white;font-size:2rem;font-weight:700;">${actor.name.charAt(0)}</div>
+                            <div class="approved-photo-placeholder" style="display: none;">${actor.name.charAt(0)}</div>
                         </div>
                         <div class="approved-info">
                             <div class="approved-role">${escapeHtml(actor.role)}</div>
