@@ -121,6 +121,7 @@
             padding: 0 1.5rem;
         }
 
+        /* Блок утверждённых */
         .approved-section {
             background: var(--approved-card-bg);
             border: 1px solid var(--approved-border);
@@ -128,56 +129,106 @@
             padding: 1.5rem;
             margin-bottom: 2.5rem;
         }
+        .approved-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+        }
         .approved-title {
             font-size: 1.2rem;
             font-weight: 600;
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            margin-bottom: 1rem;
             color: var(--approved);
         }
-        .approved-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
+        .approved-toggle-icon {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            transition: transform 0.2s;
+        }
+        .approved-list {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            margin-top: 0;
+        }
+        .approved-list.expanded {
+            max-height: 800px;
+            margin-top: 1rem;
         }
         .approved-item {
+            display: flex;
+            gap: 1.2rem;
             background: var(--card-bg);
             border-radius: 1rem;
-            padding: 0.75rem 1.25rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            cursor: pointer;
+            padding: 1rem;
+            margin-bottom: 0.8rem;
             border: 1px solid var(--border-light);
             transition: all 0.2s;
         }
         .approved-item:hover {
+            transform: translateX(4px);
             border-color: var(--approved);
-            transform: scale(1.02);
         }
-        .approved-char-name {
-            font-weight: 600;
-            font-size: 1rem;
+        .approved-photo {
+            flex-shrink: 0;
         }
-        .approved-actor-name {
-            font-size: 0.8rem;
-            color: var(--text-muted);
+        .approved-photo img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 0.75rem;
+            cursor: pointer;
+            border: 2px solid var(--approved);
         }
-        .approved-badge-icon {
-            background: var(--approved);
-            color: white;
-            padding: 0.2rem 0.6rem;
-            border-radius: 30px;
+        .approved-info {
+            flex: 1;
+        }
+        .approved-role {
+            display: inline-block;
+            background: var(--approved-bg);
+            color: var(--approved);
             font-size: 0.7rem;
             font-weight: 700;
+            padding: 0.2rem 0.6rem;
+            border-radius: 30px;
+            margin-bottom: 0.5rem;
+        }
+        .approved-actor-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+        }
+        .approved-details {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+        .approved-contact-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.3rem 0.8rem;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            text-decoration: none;
+        }
+        .approved-contact-btn:hover {
+            background: var(--accent-hover);
         }
         .empty-approved {
             color: var(--text-muted);
             font-size: 0.9rem;
+            padding: 0.5rem 0;
         }
 
+        /* Серии */
         .series-section-title {
             font-size: 1.3rem;
             font-weight: 600;
@@ -256,15 +307,6 @@
             border-radius: 20px;
             font-weight: normal;
         }
-        .has-approved-badge {
-            background-color: var(--approved-bg);
-            color: var(--approved);
-            font-size: 0.65rem;
-            font-weight: 700;
-            padding: 0.15rem 0.45rem;
-            border-radius: 30px;
-            margin-left: 0.5rem;
-        }
         .empty-message {
             color: var(--text-muted);
             padding: 0.5rem;
@@ -273,6 +315,7 @@
             border-radius: 1rem;
         }
 
+        /* Модальные окна для проб */
         .modal {
             display: none;
             position: fixed;
@@ -323,6 +366,7 @@
             border-bottom: 1px solid var(--border-light);
         }
 
+        /* Сценарный блок */
         .scene-block {
             background: var(--scene-bg);
             border: 1px solid var(--scene-border);
@@ -386,12 +430,6 @@
             font-style: normal;
             color: var(--text-secondary);
         }
-        .scene-parenthetical {
-            margin: 0.2rem 0 0.2rem 1.5rem;
-            font-style: italic;
-            color: var(--text-muted);
-            font-size: 0.75rem;
-        }
         .scene-dialogue {
             margin: 0.4rem 0;
             padding-left: 2rem;
@@ -443,23 +481,6 @@
             flex-wrap: nowrap;
             border-left: 4px solid transparent;
         }
-        .probe-card.approved-card {
-            border-left-color: var(--approved);
-            background: var(--approved-bg);
-        }
-        .approved-tag {
-            background: var(--approved);
-            color: #064e3b;
-            padding: 0.2rem 0.7rem;
-            border-radius: 30px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            display: inline-block;
-            margin-left: 0.5rem;
-        }
-        body.dark .approved-tag {
-            color: #6ee7b7;
-        }
         .probe-photo img {
             width: 70px;
             height: 70px;
@@ -470,8 +491,6 @@
         }
         .probe-info { flex: 1; min-width: 0; }
         .probe-name { font-weight: 700; font-size: 1rem; margin-bottom: 0.2rem; }
-        .probe-details { font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.3rem; }
-        .probe-desc { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.5rem; }
         .watch-video-btn {
             background: var(--accent);
             color: white;
@@ -579,11 +598,10 @@
             .series-grid { gap: 1rem; }
             .probe-photo img { width: 55px; height: 55px; }
             .modal-title { font-size: 1.3rem; }
-            .approved-item { width: 100%; }
+            .approved-item { flex-direction: column; align-items: center; text-align: center; }
+            .approved-info { text-align: center; }
             .character-item { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
             .probe-card { flex-wrap: wrap; }
-            .scene-dialogue { padding: 0.3rem 0.5rem; }
-            .scene-lines { margin-left: 0; }
         }
     </style>
 </head>
@@ -601,8 +619,13 @@
 
     <main class="main-content">
         <div class="approved-section" id="approvedSection">
-            <div class="approved-title">✅ Утверждённые</div>
-            <div id="approvedListContainer"></div>
+            <div class="approved-header" id="approvedHeader">
+                <div class="approved-title">✅ Утверждённые</div>
+                <span class="approved-toggle-icon" id="approvedToggleIcon">▼</span>
+            </div>
+            <div class="approved-list" id="approvedList">
+                <div id="approvedListContainer"></div>
+            </div>
         </div>
 
         <div class="series-section-title">📺 По сериям</div>
@@ -631,238 +654,49 @@
     </div>
 
     <script>
-        const CHARACTERS_DB = {
-            // Серия 1
-            "Леночка": {
-                series: 1,
-                dates: ["15.06"],
-                approvedProbeId: null,
-                probes: [],
-                scene: {
-                    title: "1-8. ШКОЛА ИСКУССТВ. ЗА КУЛИСАМИ. ДЕНЬ 2",
-                    content: `<div class="scene-action">Настя, нарядная, проходит за кулисами. Навстречу бежит Леночка в платье феи.</div>
-<div class="scene-dialogue"><div class="scene-character">ЛЕНОЧКА</div><div class="scene-lines">Анастасия Юрьевна, вы как принцесса из нашей сказки!</div></div>
-<div class="scene-dialogue"><div class="scene-character">НАСТЯ</div><div class="scene-lines">Спасибо, Леночка! Про носочек помнишь? Соберись!</div></div>
-<div class="scene-action">Леночка тут же серьезно начинает тянуть носочек изо всех сил.</div>
-<div class="scene-dialogue"><div class="scene-character">ВАЛЕНТИНА СЕРГЕЕВНА</div><div class="scene-lines">(уважительно-шутливо)<br>Анастасия Юрьевна!</div></div>
-<div class="scene-dialogue"><div class="scene-character">НАСТЯ</div><div class="scene-lines">Мама! Ты пришла? Спаси-и-ибо!</div></div>
-<div class="scene-action">Она обнимает мать, в глазах слезы.</div>`
-                }
+        // ======================= УТВЕРЖДЁННЫЕ АКТЁРЫ =======================
+        // Фото хранятся в папке photos/
+        const APPROVED_ACTORS = [
+            {
+                id: "matvey",
+                role: "ПАРА",
+                name: "Матвей",
+                age: "17 лет",
+                photo: "photos/матвей.jpg",
+                details: "Рост 187, размер одежды 46/43",
+                contacts: [{ type: "phone", value: "89817133050" }]
             },
-            "Продавец": { 
-                series: 1, 
-                dates: ["02.07"], 
-                approvedProbeId: null, 
-                probes: [], 
-                scene: {
-                    title: "1-46 / 2-49 / 3-3. ЗАПРАВКА",
-                    content: `<div class="scene-action"><strong>1-46. ЗАПРАВКА. ДЕНЬ 4:</strong> Егор стоит, отвернувшись от кассира, сняв очки и опустив маску, прихлёбывает кофе. Работает телевизор.</div>
-<div class="scene-action">Диктор сообщает новости: смертельное ДТП — Марина Страхова... Егор резко поворачивается к экрану.</div>
-<div class="scene-dialogue"><div class="scene-character">ДИКТОР ТВ</div><div class="scene-lines">Более года назад бесследно исчез муж Марины — Егор Страхов. На прошлой неделе мужчина был признан погибшим.</div></div>
-<div class="scene-action">Егор неловко ставит стаканчик с кофе — падает, проливается. Егор бежит прочь, опрокинув стул.</div>
-<div class="scene-action"><strong>2-49. ЗАПРАВКА. ДЕНЬ 7:</strong> Аня и Витька шепчутся между стеллажами. Аня снимает с полки бутылку газировки и пряники.</div>
-<div class="scene-action">Витька уходит к кассе. Аня рассматривает полки. Вдруг мужская рука сзади зажимает ей рот — охранник уносит её.</div>
-<div class="scene-action"><strong>3-3. ЗАПРАВКА. ДЕНЬ 7:</strong> Настя оббегает магазин, Данила и Олег разбегаются между стеллажами.</div>
-<div class="scene-dialogue"><div class="scene-character">УЧАСТКОВЫЙ</div><div class="scene-lines">(работнице)<br>Скажите, с мальчиком был кто-то ещё?</div></div>
-<div class="scene-dialogue"><div class="scene-character">РАБОТНИЦА</div><div class="scene-lines">Да, с ним ещё девочка была. Но тут её нет…</div></div>
-<div class="scene-dialogue"><div class="scene-character">ДАНИЛА</div><div class="scene-lines">Камеры работают?</div></div>
-<div class="scene-dialogue"><div class="scene-character">РАБОТНИЦА</div><div class="scene-lines">Только над кассами и у выхода. Девочка зашла с мальчиком, а потом — пропала.</div></div>`
-                }
-            },
-            "Заправщик": { 
-                series: 1, 
-                dates: ["02.07"], 
-                approvedProbeId: null, 
-                probes: [], 
-                scene: {
-                    title: "1-46. ЗАПРАВКА. ДЕНЬ 4",
-                    content: `<div class="scene-action">Егор стоит, отвернувшись от кассира, прихлёбывает кофе.</div>
-<div class="scene-action">Диктор сообщает о смертельном ДТП и исчезновении Егора Страхова. Егор в шоке.</div>
-<div class="scene-action">Он неловко ставит стаканчик — падает, проливается. Егор бежит прочь, опрокинув стул.</div>
-<div class="scene-action">Работник заправки, который подметал зал, отвлекается на шум, недовольно цокает, берёт тряпку...</div>`
-                }
-            },
-            // Серия 2
-            "Врач 3": { 
-                series: 2, 
-                dates: ["04.07"], 
-                approvedProbeId: null, 
-                probes: [], 
-                scene: {
-                    title: "2-42 / 2-45. БОЛЬНИЦА. ДЕНЬ 7",
-                    content: `<div class="scene-action"><strong>2-42. ПАЛАТА АЛЕКСЕЯ ПЕТРОВИЧА:</strong> Алексей Петрович лежит в больничной постели, подключенный к прибору. В палату заглядывает Настя.</div>
-<div class="scene-dialogue"><div class="scene-character">НАСТЯ</div><div class="scene-lines">Алексей Петрович, к вам можно?</div></div>
-<div class="scene-action">Она пропускает Аню. Девочка бежит к деду.</div>
-<div class="scene-dialogue"><div class="scene-character">АНЯ</div><div class="scene-lines">Деда! Деда, а у тебя что, было два сына?</div></div>
-<div class="scene-action">Лицо Алексея Петровича вздрагивает. Прибор начинает пищать.</div>
-<div class="scene-dialogue"><div class="scene-character">НАСТЯ</div><div class="scene-lines">Алексей Петрович!</div></div>
-<div class="scene-action">Настя бросается к кнопке вызова. Двери распахиваются, вбегают врачи.</div>
-<div class="scene-action"><strong>2-45. КОРИДОР БОЛЬНИЦЫ:</strong> Настя, Данила, Лиза спорят.</div>
-<div class="scene-dialogue"><div class="scene-character">ЛИЗА</div><div class="scene-lines">Это прекрасное предложение! Нужно продать дом и ферму!</div></div>
-<div class="scene-dialogue"><div class="scene-character">НАСТЯ</div><div class="scene-lines">Почему мы вообще это обсуждаем? Это может только Алексей Петрович решать!</div></div>
-<div class="scene-dialogue"><div class="scene-character">ДАНИЛА</div><div class="scene-lines">Доля здравого смысла здесь есть. На деньги, которые предлагает Лесков, можно прожить достойную старость.</div></div>
-<div class="scene-action">В коридоре появляется ВРАЧ 2.</div>
-<div class="scene-dialogue"><div class="scene-character">ВРАЧ 2</div><div class="scene-lines">Страховы? Вашего отца стабилизировали. Он заснул. Завтра приходите.</div></div>
-<div class="scene-dialogue"><div class="scene-character">ДАНИЛА</div><div class="scene-lines">Спасибо.</div></div>
-<div class="scene-action">Врач уходит. Данила обращается к Насте: «Девочку, конечно, мы заберем». Лиза возмущается. Настя ищет Аню — её нет.</div>`
-                }
-            },
-            "Медсестра 2": { 
-                series: 2, 
-                dates: ["04.07"], 
-                approvedProbeId: null, 
-                probes: [], 
-                scene: {
-                    title: "2-41. БОЛЬНИЦА. У РЕГИСТРАТУРЫ. ДЕНЬ 7",
-                    content: `<div class="scene-action">Настя с Аней заглядывают в регистратуру.</div>
-<div class="scene-dialogue"><div class="scene-character">НАСТЯ</div><div class="scene-lines">Страхов Алексей Петрович в какой палате лежит?</div></div>
-<div class="scene-dialogue"><div class="scene-character">МЕДСЕСТРА-1</div><div class="scene-lines">Да куда ж вы толпой-то к нему? Вон стоят...</div></div>
-<div class="scene-action">Настя оглядывается — видит Данилу и Лизу. Подходит Медсестра-2.</div>
-<div class="scene-dialogue"><div class="scene-character">МЕДСЕСТРА-2</div><div class="scene-lines">(улыбнувшись)<br>Кто к Страхову? Сразу видно, что парочка. Пойдёмте за мной.</div></div>
-<div class="scene-action">Все уходят. Медсестра-1 звонит по телефону.</div>`
-                }
-            },
-            "Медсестра 1": { 
-                series: 2, 
-                dates: ["04.07"], 
-                approvedProbeId: null, 
-                probes: [], 
-                scene: {
-                    title: "2-41. БОЛЬНИЦА. У РЕГИСТРАТУРЫ. ДЕНЬ 7",
-                    content: `<div class="scene-dialogue"><div class="scene-character">МЕДСЕСТРА-1</div><div class="scene-lines">Да куда ж вы толпой-то к нему? По очереди хотя бы. И бахилы наденьте.</div></div>
-<div class="scene-action">Медсестра-1 звонит по телефону.</div>
-<div class="scene-dialogue"><div class="scene-character">МЕДСЕСТРА-1</div><div class="scene-lines">(в телефон)<br>Здравствуйте, Михаил Михайлович. Вы просили о состоянии здоровья Страхова сообщить... К нему сын приехал. И ещё девушка. Да, сын. Точно. Всегда рада помочь.</div></div>`
-                }
-            },
-            "Охранник Лескова 1": { 
-                series: 2, 
-                dates: ["20.06", "26.06", "02.07", "04.07"], 
-                approvedProbeId: null, 
-                probes: [], 
-                scene: {
-                    title: "2-7 / 3-9 / 4-4. ОХРАННИКИ ЛЕСКОВА",
-                    content: `<div class="scene-action">Охранники Лескова выполняют приказы хозяина.</div>
-<div class="scene-action"><strong>2-7. КЛАДБИЩЕ:</strong> Охранник-1 и Охранник-2 выходят из джипа. Один достаёт огромный букет с чёрной лентой.</div>
-<div class="scene-dialogue"><div class="scene-character">ЛЕСКОВ</div><div class="scene-lines">Ждите здесь. Я сам.</div></div>
-<div class="scene-action"><strong>2-49. ЗАПРАВКА:</strong> Охранник зажимает рот Ане и уносит её.</div>
-<div class="scene-action"><strong>3-9. ГРОТ:</strong> Охранник хватает Егора сзади, заламывает руки.</div>
-<div class="scene-action"><strong>4-4. ПОДВАЛ:</strong> Охранник ставит перед Егором миску с едой, снимает наручники.</div>`
-                }
-            },
-            "Охранник Лескова 2": { 
-                series: 2, 
-                dates: ["20.06", "26.06", "02.07"], 
-                approvedProbeId: null, 
-                probes: [], 
-                scene: {
-                    title: "2-7 / 3-9. ОХРАННИКИ ЛЕСКОВА",
-                    content: `<div class="scene-action"><strong>2-7. КЛАДБИЩЕ:</strong> Охранник-1 и Охранник-2 выходят из джипа.</div>
-<div class="scene-action"><strong>3-9. ГРОТ:</strong> Охранник держит Егора, пока Лесков глумится.</div>
-<div class="scene-dialogue"><div class="scene-character">ЛЕСКОВ</div><div class="scene-lines">Будешь мне служить! И земли отдашь батины, понял?!</div></div>`
-                }
-            },
-            // Серия 3
-            "Дядька": { 
-                series: 3, 
-                dates: ["01.07"], 
-                approvedProbeId: null, 
-                probes: [], 
-                scene: {
-                    title: "3-13. ДВОР ДОМА СТРАХОВЫХ. ДЕНЬ 8",
-                    content: `<div class="scene-action">Старенькая девятка тормозит. Из неё выходит дядька, открывает дверцу, выпуская Аню.</div>
-<div class="scene-action">По улице бредут грустные Данила и Настя. Они видят Аню и бегут к ней.</div>
-<div class="scene-dialogue"><div class="scene-character">НАСТЯ</div><div class="scene-lines">Анечка! Вернулась! Ты цела?</div></div>
-<div class="scene-dialogue"><div class="scene-character">ДЯДЬКА</div><div class="scene-lines">Я извиняюсь, родители! Тут это... Написано: награда - сто тыщ.</div></div>
-<div class="scene-dialogue"><div class="scene-character">ДАНИЛА</div><div class="scene-lines">Сейчас. Вы только скажите, где вы её нашли?</div></div>
-<div class="scene-dialogue"><div class="scene-character">ДЯДЬКА</div><div class="scene-lines">Да вдоль дороги, смотрю, – бредёт. А до этого фотографии её видел. Ну, точно она!</div></div>`
-                }
-            },
-            "Фотограф": { 
-                series: 3, 
-                dates: ["11.07"], 
-                approvedProbeId: null, 
-                probes: [], 
-                scene: {
-                    title: "3-38. ПАРКОВКА. ДЕНЬ 11",
-                    content: `<div class="scene-action">Настя с папкой документов выходит из опеки. Раздаются звуки затвора — её фотографируют из машины.</div>
-<div class="scene-action">Она подходит к своей машине, у которой открыт капот. Над ним возится Паша.</div>
-<div class="scene-dialogue"><div class="scene-character">НАСТЯ</div><div class="scene-lines">Всё, я везде расписалась! Мне ещё за Аней! Поехали?</div></div>
-<div class="scene-dialogue"><div class="scene-character">ПАША</div><div class="scene-lines">Утечка тормозной жидкости. Метнусь до сервиса, подождёшь?</div></div>
-<div class="scene-action">Павел уезжает. Настя звонит Даниле. Снова звуки фотоаппарата.</div>`
-                }
-            },
-            // Серия 4
-            "Эксперт": { 
-                series: 4, 
-                dates: ["21.06"], 
-                approvedProbeId: null, 
-                probes: [], 
-                scene: {
-                    title: "4-42. КАБИНЕТ ИВАНА. НОЧЬ 12",
-                    content: `<div class="scene-action">Иван смотрит на снимки Насти на экране. На стене — фотографии семьи Страховых и Лескова.</div>
-<div class="scene-action">Стук в дверь. Входит эксперт.</div>
-<div class="scene-dialogue"><div class="scene-character">ЭКСПЕРТ</div><div class="scene-lines">Вань, экспертиза видеорегистратора из машины Марины Страховой готова.</div></div>
-<div class="scene-dialogue"><div class="scene-character">ЭКСПЕРТ</div><div class="scene-lines">Во внутренней памяти остались последние видео, мы даже расшифровку по губам смогли.</div></div>
-<div class="scene-action">Иван читает документ, глаза лезут на лоб. Он смотрит на фото Данилы, зачёркивает знак вопроса.</div>`
-                }
-            },
-            "Работник Кухни": { 
-                series: 4, 
-                dates: ["26.06"], 
-                approvedProbeId: null, 
-                probes: [], 
-                scene: {
-                    title: "4-34 / 4-36. УСАДЬБА ЛЕСКОВА",
-                    content: `<div class="scene-action">«Каблучок» Олега стоит у чёрного входа. Олег достаёт из машины ящик, несёт в подвал.</div>
-<div class="scene-action">Работник кухни скучает, подпирая притолоку, помогать не собирается.</div>
-<div class="scene-action">Олег берёт очередной ящик. Косится на работника. Тот "втыкает" в смартфон.</div>
-<div class="scene-action">Олег берёт ружьё, вешает на плечо. Кладёт в ящик фомку. Проходит мимо — работник даже не поднял головы.</div>`
-                }
-            },
-            "Охранник Владений Лескова": { 
-                series: 4, 
-                dates: ["26.06"], 
-                approvedProbeId: null, 
-                probes: [], 
-                scene: {
-                    title: "4-33. УСАДЬБА ЛЕСКОВА. ДЕНЬ 12",
-                    content: `<div class="scene-action">«Каблучок» Олега подъезжает к воротам усадьбы.</div>
-<div class="scene-dialogue"><div class="scene-character">ОЛЕГ</div><div class="scene-lines">(охраннику)<br>Открывай!</div></div>
-<div class="scene-dialogue"><div class="scene-character">ОХРАННИК</div><div class="scene-lines">Вы к кому? Не было распоряжения.</div></div>
-<div class="scene-action">Охранник вызывает по рации. Получает отбой. Олег показывает накладную. Снова связь — ворота открывают.</div>
-<div class="scene-action"><strong>4-25:</strong> Олег выходит из леса к усадьбе. У ворот — охранник. Олег отступает.</div>
-<div class="scene-action">Он обходит усадьбу, замечает камеру на заборе. Звонит телефон — Олег прячется.</div>`
-                }
-            },
-            "Врач 4": { 
-                series: 4, 
-                dates: ["04.07"], 
-                approvedProbeId: null, 
-                probes: [], 
-                scene: {
-                    title: "4-28. БОЛЬНИЦА. РЕАНИМАЦИОННЫЙ БЛОК АНИ",
-                    content: `<div class="scene-action">Настя и Данила стоят в коридоре, смотрят на Аню. Приходит врач.</div>
-<div class="scene-dialogue"><div class="scene-character">ВРАЧ</div><div class="scene-lines">Страховы?</div></div>
-<div class="scene-dialogue"><div class="scene-character">ДАНИЛА</div><div class="scene-lines">Да, это мы!</div></div>
-<div class="scene-dialogue"><div class="scene-character">ВРАЧ</div><div class="scene-lines">Стабилизировали. Но в лёгких могла остаться вода. Девочку оставляем под наблюдением.</div></div>
-<div class="scene-dialogue"><div class="scene-character">ДАНИЛА</div><div class="scene-lines">Мы останемся с ней!</div></div>
-<div class="scene-dialogue"><div class="scene-character">ВРАЧ</div><div class="scene-lines">Возвращайтесь утром, мамам и папам тоже нужно отдохнуть.</div></div>`
-                }
-            },
-            "Врач скорой": { 
-                series: 4, 
-                dates: ["14.07"], 
-                approvedProbeId: null, 
-                probes: [], 
-                scene: {
-                    title: "4-24. БЕРЕГ ОЗЕРА. ДЕНЬ 12",
-                    content: `<div class="scene-action">На берегу стоит машина скорой. Анечка жива, отплёвывает воду. Врачи скорой оказывают помощь.</div>
-<div class="scene-action">Сотрудники скорой поднимают Аню, заносят в скорую.</div>
-<div class="scene-dialogue"><div class="scene-character">ВРАЧ</div><div class="scene-lines">Родители, вы нам мешаете! Здесь места нет! Вы следом поезжайте. В детскую краевую везём.</div></div>
-<div class="scene-action">Двери закрываются. Машина скорой уезжает с мигалкой.</div>`
-                }
+            {
+                id: "dasha",
+                role: "ПАРА",
+                name: "Даша",
+                age: "16 лет",
+                photo: "photos/даша.jpg",
+                details: "Рост 173, размер одежды: XS,S, размер обуви: 38,39",
+                contacts: [{ type: "phone", value: "+7 991 486 34 16" }]
             }
+        ];
+
+        // ======================= ПЕРСОНАЖИ СЕРИЙ =======================
+        const CHARACTERS_DB = {
+            "Леночка": { series: 1, dates: ["15.06"], probes: [], scene: null },
+            "Продавец": { series: 1, dates: ["02.07"], probes: [], scene: null },
+            "Заправщик": { series: 1, dates: ["02.07"], probes: [], scene: null },
+            "Врач 3": { series: 2, dates: ["04.07"], probes: [], scene: null },
+            "Медсестра 2": { series: 2, dates: ["04.07"], probes: [], scene: null },
+            "Медсестра 1": { series: 2, dates: ["04.07"], probes: [], scene: null },
+            "Охранник Лескова 1": { series: 2, dates: ["20.06", "26.06", "02.07", "04.07"], probes: [], scene: null },
+            "Охранник Лескова 2": { series: 2, dates: ["20.06", "26.06", "02.07"], probes: [], scene: null },
+            "Дядька": { series: 3, dates: ["01.07"], probes: [], scene: null },
+            "Фотограф": { series: 3, dates: ["11.07"], probes: [], scene: null },
+            "Эксперт": { series: 4, dates: ["21.06"], probes: [], scene: null },
+            "Работник Кухни": { series: 4, dates: ["26.06"], probes: [], scene: null },
+            "Охранник Владений Лескова": { series: 4, dates: ["26.06"], probes: [], scene: null },
+            "Врач 4": { series: 4, dates: ["04.07"], probes: [], scene: null },
+            "Врач скорой": { series: 4, dates: ["14.07"], probes: [], scene: null }
         };
+
+        let isApprovedExpanded = false;
 
         function escapeHtml(str) {
             if (!str) return '';
@@ -874,26 +708,68 @@
             });
         }
 
-        function getApprovedProbeId(characterName) {
-            const charData = CHARACTERS_DB[characterName];
-            if (charData && charData.approvedProbeId !== undefined && charData.approvedProbeId !== null) {
-                return charData.approvedProbeId;
-            }
-            return null;
+        function formatPhoneForLink(phone) {
+            return phone.replace(/[^0-9+]/g, '');
         }
 
-        function getApprovedProbeData(characterName) {
-            const charData = CHARACTERS_DB[characterName];
-            if (!charData || !charData.probes) return null;
-            const approvedId = getApprovedProbeId(characterName);
-            if (approvedId === null) return null;
-            for (let idx = 0; idx < charData.probes.length; idx++) {
-                const probe = charData.probes[idx];
-                if (probe.id !== undefined && approvedId === probe.id) return { character: characterName, probe, series: charData.series };
-                if (typeof approvedId === 'number' && approvedId === idx) return { character: characterName, probe, series: charData.series };
+        function renderApprovedActors() {
+            const container = document.getElementById('approvedListContainer');
+            if (APPROVED_ACTORS.length === 0) {
+                container.innerHTML = '<div class="empty-approved">✨ Пока нет утверждённых актёров</div>';
+                return;
             }
-            return null;
+            
+            let html = '';
+            for (const actor of APPROVED_ACTORS) {
+                // Путь к фото: photos/имя_файла.jpg
+                const photoPath = actor.photo;
+                
+                html += `
+                    <div class="approved-item" data-id="${actor.id}">
+                        <div class="approved-photo">
+                            <img src="${photoPath}" alt="${actor.name}" data-photo="${photoPath}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="approved-photo-placeholder" style="display: none; width:100px;height:100px;background:var(--approved);border-radius:0.75rem;align-items:center;justify-content:center;color:white;font-size:2rem;font-weight:700;">${actor.name.charAt(0)}</div>
+                        </div>
+                        <div class="approved-info">
+                            <div class="approved-role">${escapeHtml(actor.role)}</div>
+                            <div class="approved-actor-name">${escapeHtml(actor.name)}</div>
+                            <div class="approved-details">${escapeHtml(actor.age)} • ${escapeHtml(actor.details)}</div>`;
+                
+                for (const contact of actor.contacts) {
+                    if (contact.type === 'phone') {
+                        const cleanPhone = formatPhoneForLink(contact.value);
+                        html += `<a href="tel:${cleanPhone}" class="approved-contact-btn">📞 ${contact.value}</a>`;
+                    }
+                }
+                
+                html += `</div></div>`;
+            }
+            container.innerHTML = html;
+            
+            // Обработчики для увеличения фото
+            document.querySelectorAll('.approved-photo img').forEach(img => {
+                img.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const photoUrl = img.getAttribute('data-photo');
+                    if (photoUrl) openImageModal(photoUrl);
+                });
+            });
         }
+
+        // Переключатель списка утверждённых
+        document.getElementById('approvedHeader').addEventListener('click', () => {
+            const list = document.getElementById('approvedList');
+            const icon = document.getElementById('approvedToggleIcon');
+            if (isApprovedExpanded) {
+                list.classList.remove('expanded');
+                icon.textContent = '▼';
+                isApprovedExpanded = false;
+            } else {
+                list.classList.add('expanded');
+                icon.textContent = '▲';
+                isApprovedExpanded = true;
+            }
+        });
 
         function getCharactersBySeries(seriesNum) {
             const result = [];
@@ -903,32 +779,6 @@
                 }
             }
             return result;
-        }
-
-        function renderApproved() {
-            const container = document.getElementById('approvedListContainer');
-            const approvedItems = [];
-            for (const [charName] of Object.entries(CHARACTERS_DB)) {
-                const approvedData = getApprovedProbeData(charName);
-                if (approvedData) approvedItems.push(approvedData);
-            }
-            if (approvedItems.length === 0) {
-                container.innerHTML = '<div class="empty-approved">✨ Пока нет утверждённых актёров</div>';
-                return;
-            }
-            let html = '<div class="approved-grid">';
-            for (const item of approvedItems) {
-                html += `<div class="approved-item" data-char="${escapeHtml(item.character)}">
-                            <span class="approved-badge-icon">✅</span>
-                            <div><div class="approved-char-name">${escapeHtml(item.character)}</div>
-                            <div class="approved-actor-name">${escapeHtml(item.probe.name)}</div></div>
-                         </div>`;
-            }
-            html += '</div>';
-            container.innerHTML = html;
-            document.querySelectorAll('.approved-item').forEach(el => {
-                el.addEventListener('click', () => openCharacterModal(el.getAttribute('data-char')));
-            });
         }
 
         function renderSeries() {
@@ -943,11 +793,9 @@
                     html += `<div class="empty-message">✨ Персонажи скоро появятся</div>`;
                 } else {
                     for (const ch of chars) {
-                        const hasApproved = getApprovedProbeId(ch.name) !== null;
-                        const approvedBadge = hasApproved ? `<span class="has-approved-badge">✅</span>` : '';
                         const datesHtml = ch.dates.length > 0 ? `<div class="character-dates">${ch.dates.map(d => `<span class="date-badge">📅 ${d}</span>`).join('')}</div>` : '';
                         html += `<li class="character-item" data-char="${escapeHtml(ch.name)}">
-                                    <div class="character-name">${escapeHtml(ch.name)}${approvedBadge}</div>${datesHtml}
+                                    <div class="character-name">${escapeHtml(ch.name)}</div>${datesHtml}
                                  </li>`;
                     }
                 }
@@ -960,31 +808,10 @@
             });
         }
 
-        function renderSceneHTML(scene) {
-            if (!scene || !scene.content) return '';
-            return `
-                <div class="scene-block">
-                    <div class="scene-header" onclick="toggleScene(this)">
-                        <div class="scene-title">
-                            <span class="scene-flag">📖</span>
-                            <span>${escapeHtml(scene.title)}</span>
-                        </div>
-                        <button class="toggle-scene-btn">▶ Развернуть</button>
-                    </div>
-                    <div class="scene-content">${scene.content}</div>
-                    <div style="padding: 0 1rem 1rem 1rem; display: none;" class="scene-probes-btn">
-                        <button class="go-to-probes-btn" onclick="scrollToProbes()">🎬 Перейти к пробам ↓</button>
-                    </div>
-                </div>
-            `;
-        }
-
         function openCharacterModal(characterName) {
             const modal = document.getElementById('probeModal');
             const modalContent = document.getElementById('modalDynamicContent');
             const charData = CHARACTERS_DB[characterName];
-            
-            const sceneHtml = charData.scene ? renderSceneHTML(charData.scene) : '';
             
             let probesHtml = '<div class="probes-section"><div class="probes-title">🎭 Пробы</div>';
             if (!charData.probes || charData.probes.length === 0) {
@@ -993,27 +820,13 @@
                 for (let idx = 0; idx < charData.probes.length; idx++) {
                     const probe = charData.probes[idx];
                     const photoPath = probe.photo && probe.photo.trim() !== "" ? probe.photo : "https://via.placeholder.com/200x200?text=Нет+фото";
-                    const isApproved = (() => {
-                        const approvedId = getApprovedProbeId(characterName);
-                        if (approvedId === null) return false;
-                        if (probe.id !== undefined && approvedId === probe.id) return true;
-                        if (typeof approvedId === 'number' && approvedId === idx) return true;
-                        return false;
-                    })();
-                    const approvedMark = isApproved ? '<span class="approved-tag">✅ Утверждён</span>' : '';
-                    probesHtml += `
-                        <div class="probe-card ${isApproved ? 'approved-card' : ''}">
-                            <div class="probe-photo">
-                                <img src="${escapeHtml(photoPath)}" alt="${escapeHtml(probe.name)}" class="probe-img" data-photo="${escapeHtml(photoPath)}">
-                            </div>
+                    probesHtml += `<div class="probe-card">
+                            <div class="probe-photo"><img src="${escapeHtml(photoPath)}" class="probe-img" data-photo="${escapeHtml(photoPath)}"></div>
                             <div class="probe-info">
-                                <div class="probe-name">${escapeHtml(probe.name)} ${approvedMark}</div>
-                                ${probe.details ? `<div class="probe-details">${escapeHtml(probe.details)}</div>` : ''}
-                                ${probe.extra ? `<div class="probe-desc">${escapeHtml(probe.extra)}</div>` : ''}
+                                <div class="probe-name">${escapeHtml(probe.name)}</div>
                                 <button class="watch-video-btn" data-video="${escapeHtml(probe.videoUrl || '')}">🎥 Смотреть видео</button>
                             </div>
-                        </div>
-                    `;
+                        </div>`;
                 }
             }
             probesHtml += '</div>';
@@ -1021,18 +834,10 @@
             modalContent.innerHTML = `
                 <div class="modal-title">🎭 ${escapeHtml(characterName)}</div>
                 <div class="modal-subtitle">${charData.dates.length > 0 ? `📅 Даты съёмок: ${charData.dates.join(', ')}` : '📅 Даты съёмок пока не указаны'}</div>
-                ${sceneHtml}
                 ${probesHtml}
             `;
             
             modal.classList.add('active');
-            
-            setTimeout(() => {
-                const goToProbesBtn = document.querySelector('#modalDynamicContent .go-to-probes-btn');
-                if (goToProbesBtn) {
-                    goToProbesBtn.onclick = () => scrollToProbes();
-                }
-            }, 50);
             
             document.querySelectorAll('.probe-img').forEach(img => {
                 img.addEventListener('click', (e) => {
@@ -1049,28 +854,6 @@
                 });
             });
         }
-        
-        window.toggleScene = function(headerElement) {
-            const sceneBlock = headerElement.closest('.scene-block');
-            const content = sceneBlock.querySelector('.scene-content');
-            const btn = sceneBlock.querySelector('.toggle-scene-btn');
-            const probesBtnDiv = sceneBlock.querySelector('.scene-probes-btn');
-            
-            if (content.classList.contains('expanded')) {
-                content.classList.remove('expanded');
-                btn.textContent = '▶ Развернуть';
-                if (probesBtnDiv) probesBtnDiv.style.display = 'none';
-            } else {
-                content.classList.add('expanded');
-                btn.textContent = '▼ Свернуть';
-                if (probesBtnDiv) probesBtnDiv.style.display = 'block';
-            }
-        };
-        
-        window.scrollToProbes = function() {
-            const probesSection = document.querySelector('#modalDynamicContent .probes-section');
-            if (probesSection) probesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        };
 
         function openImageModal(imgSrc) {
             const modal = document.getElementById('imageModal');
@@ -1126,7 +909,7 @@
         });
 
         function init() {
-            renderApproved();
+            renderApprovedActors();
             renderSeries();
         }
         init();
