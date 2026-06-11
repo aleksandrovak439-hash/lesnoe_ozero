@@ -121,7 +121,6 @@
             padding: 0 1.5rem;
         }
 
-        /* Блок утверждённых */
         .approved-section {
             background: var(--approved-card-bg);
             border: 1px solid var(--approved-border);
@@ -240,7 +239,6 @@
             padding: 0.5rem 0;
         }
 
-        /* Серии */
         .series-section-title {
             font-size: 1.3rem;
             font-weight: 600;
@@ -327,7 +325,6 @@
             border-radius: 1rem;
         }
 
-        /* Модальные окна для проб */
         .modal {
             display: none;
             position: fixed;
@@ -378,7 +375,6 @@
             border-bottom: 1px solid var(--border-light);
         }
 
-        /* Сценарный блок */
         .scene-block {
             background: var(--scene-bg);
             border: 1px solid var(--scene-border);
@@ -488,40 +484,82 @@
             margin-bottom: 0.75rem;
             font-size: 1rem;
         }
+        .probes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1.2rem;
+        }
         .probe-card {
             background: var(--chip-bg);
             border-radius: 1rem;
             padding: 1rem;
-            margin-bottom: 1rem;
-            display: flex;
-            gap: 1rem;
-            align-items: flex-start;
-            flex-wrap: nowrap;
-            border-left: 4px solid transparent;
+            text-align: center;
+            border: 1px solid var(--border-light);
+            transition: all 0.2s;
+        }
+        .probe-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+            border-color: var(--accent);
+        }
+        .probe-card.approved-card {
+            border: 2px solid var(--approved);
+            background: var(--approved-bg);
+        }
+        .approved-tag {
+            background: var(--approved);
+            color: #064e3b;
+            padding: 0.2rem 0.6rem;
+            border-radius: 30px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-left: 0.5rem;
+        }
+        body.dark .approved-tag {
+            color: #6ee7b7;
+        }
+        .probe-photo {
+            margin-bottom: 0.75rem;
         }
         .probe-photo img {
-            width: 70px;
-            height: 70px;
+            width: 100%;
+            aspect-ratio: 1 / 1;
             object-fit: cover;
-            border-radius: 50%;
+            border-radius: 0.75rem;
             cursor: pointer;
             border: 2px solid var(--accent);
+            background: var(--card-bg);
         }
-        .probe-info { flex: 1; min-width: 0; }
-        .probe-name { font-weight: 700; font-size: 1rem; margin-bottom: 0.2rem; }
-        .probe-details { font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.3rem; }
-        .probe-desc { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+        .probe-name {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+        .probe-details {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.3rem;
+        }
+        .probe-desc {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+        }
         .watch-video-btn {
             background: var(--accent);
             color: white;
             border: none;
-            padding: 0.3rem 0.8rem;
+            padding: 0.4rem 0.8rem;
             border-radius: 40px;
             font-weight: 500;
             cursor: pointer;
             font-size: 0.75rem;
+            width: 100%;
         }
-        .watch-video-btn:hover { background: var(--accent-hover); }
+        .watch-video-btn:hover {
+            background: var(--accent-hover);
+        }
         .empty-probes {
             color: var(--text-muted);
             padding: 1rem;
@@ -530,7 +568,6 @@
             border-radius: 1rem;
         }
 
-        /* Модалка для видео */
         .video-modal {
             display: none;
             position: fixed;
@@ -628,7 +665,10 @@
 
         @media (max-width: 640px) {
             .series-grid { gap: 1rem; }
-            .probe-photo img { width: 55px; height: 55px; }
+            .probes-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
             .modal-title { font-size: 1.3rem; }
             .approved-item {
                 flex-direction: row !important;
@@ -669,7 +709,6 @@
                 max-height: 600px;
             }
             .character-item { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
-            .probe-card { flex-wrap: wrap; }
         }
     </style>
 </head>
@@ -722,7 +761,6 @@
     </div>
 
     <script>
-        // ======================= УТВЕРЖДЁННЫЕ АКТЁРЫ =======================
         const APPROVED_ACTORS = [
             {
                 id: "matvey",
@@ -744,9 +782,7 @@
             }
         ];
 
-        // ======================= ПЕРСОНАЖИ СЕРИЙ С ТЕКСТАМИ СЦЕН =======================
         const CHARACTERS_DB = {
-            // Серия 1
             "Леночка": {
                 series: 1,
                 dates: ["15.06"],
@@ -824,7 +860,6 @@
 <div class="scene-action">Работник заправки, который подметал зал, отвлекается на шум, недовольно цокает, берёт тряпку...</div>`
                 }
             },
-            // Серия 2
             "Врач 3": { 
                 series: 2, 
                 dates: ["04.07"], 
@@ -903,7 +938,6 @@
 <div class="scene-dialogue"><div class="scene-character">ЛЕСКОВ</div><div class="scene-lines">Будешь мне служить! И земли отдашь батины, понял?!</div></div>`
                 }
             },
-            // Серия 3
             "Дядька": { 
                 series: 3, 
                 dates: ["01.07"], 
@@ -937,7 +971,6 @@
 <div class="scene-action">Павел уезжает. Настя звонит Даниле. Снова звуки фотоаппарата.</div>`
                 }
             },
-            // Серия 4
             "Эксперт": { 
                 series: 4, 
                 dates: ["21.06"], 
@@ -1151,9 +1184,10 @@
             if (!charData.probes || charData.probes.length === 0) {
                 probesHtml += '<div class="empty-probes">📹 Пробы для этого персонажа скоро появятся.</div>';
             } else {
+                probesHtml += '<div class="probes-grid">';
                 for (let idx = 0; idx < charData.probes.length; idx++) {
                     const probe = charData.probes[idx];
-                    const photoPath = probe.photo && probe.photo.trim() !== "" ? probe.photo : "https://via.placeholder.com/200x200?text=Нет+фото";
+                    const photoPath = probe.photo && probe.photo.trim() !== "" ? probe.photo : "https://via.placeholder.com/300x300?text=Нет+фото";
                     const isApproved = charData.approvedProbeId === probe.id;
                     const approvedMark = isApproved ? '<span class="approved-tag">✅ Утверждён</span>' : '';
                     probesHtml += `
@@ -1161,15 +1195,14 @@
                             <div class="probe-photo">
                                 <img src="${escapeHtml(photoPath)}" alt="${escapeHtml(probe.name)}" class="probe-img" data-photo="${escapeHtml(photoPath)}">
                             </div>
-                            <div class="probe-info">
-                                <div class="probe-name">${escapeHtml(probe.name)} ${approvedMark}</div>
-                                ${probe.details ? `<div class="probe-details">${escapeHtml(probe.details)}</div>` : ''}
-                                ${probe.extra ? `<div class="probe-desc">${escapeHtml(probe.extra)}</div>` : ''}
-                                <button class="watch-video-btn" data-video="${escapeHtml(probe.videoUrl || '')}">🎥 Смотреть видео</button>
-                            </div>
+                            <div class="probe-name">${escapeHtml(probe.name)} ${approvedMark}</div>
+                            ${probe.details ? `<div class="probe-details">${escapeHtml(probe.details)}</div>` : ''}
+                            ${probe.extra ? `<div class="probe-desc">${escapeHtml(probe.extra)}</div>` : ''}
+                            <button class="watch-video-btn" data-video="${escapeHtml(probe.videoUrl || '')}">🎥 Смотреть видео</button>
                         </div>
                     `;
                 }
+                probesHtml += '</div>';
             }
             probesHtml += '</div>';
             
