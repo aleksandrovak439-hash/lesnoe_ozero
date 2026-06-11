@@ -509,6 +509,8 @@
         }
         .probe-info { flex: 1; min-width: 0; }
         .probe-name { font-weight: 700; font-size: 1rem; margin-bottom: 0.2rem; }
+        .probe-details { font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.3rem; }
+        .probe-desc { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.5rem; }
         .watch-video-btn {
             background: var(--accent);
             color: white;
@@ -528,32 +530,7 @@
             border-radius: 1rem;
         }
 
-        .image-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            align-items: center;
-            justify-content: center;
-            z-index: 1300;
-            cursor: pointer;
-        }
-        .image-modal.active { display: flex; }
-        .image-modal img { max-width: 90%; max-height: 90%; border-radius: 1rem; }
-        .close-image {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            color: white;
-            font-size: 2rem;
-            cursor: pointer;
-            background: none;
-            border: none;
-        }
-
+        /* Модалка для видео */
         .video-modal {
             display: none;
             position: fixed;
@@ -603,6 +580,32 @@
             z-index: 20;
         }
 
+        .image-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            align-items: center;
+            justify-content: center;
+            z-index: 1300;
+            cursor: pointer;
+        }
+        .image-modal.active { display: flex; }
+        .image-modal img { max-width: 90%; max-height: 90%; border-radius: 1rem; }
+        .close-image {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
         .footer {
             text-align: center;
             padding: 2rem;
@@ -612,7 +615,6 @@
             font-size: 0.85rem;
         }
 
-        /* Десктопная версия */
         @media (min-width: 641px) {
             .approved-item {
                 flex-direction: row;
@@ -624,12 +626,10 @@
             }
         }
 
-        /* Мобильная версия */
         @media (max-width: 640px) {
             .series-grid { gap: 1rem; }
             .probe-photo img { width: 55px; height: 55px; }
             .modal-title { font-size: 1.3rem; }
-            
             .approved-item {
                 flex-direction: row !important;
                 align-items: center !important;
@@ -668,7 +668,6 @@
             .approved-list.expanded {
                 max-height: 600px;
             }
-            
             .character-item { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
             .probe-card { flex-wrap: wrap; }
         }
@@ -751,7 +750,36 @@
             "Леночка": {
                 series: 1,
                 dates: ["15.06"],
-                probes: [],
+                approvedProbeId: null,
+                probes: [
+                    {
+                        id: "kokuina",
+                        name: "Кокурина Любовь",
+                        age: "8 лет",
+                        photo: "photos/Кокурина.jpg",
+                        details: "Рост 130 см, обувь 33",
+                        extra: "",
+                        videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239017&hash=29b13c99e05d5679&hd=3"
+                    },
+                    {
+                        id: "anisimova",
+                        name: "Диана Анисимова",
+                        age: "8 лет",
+                        photo: "photos/Анисимова.jpg",
+                        details: "130см / 128-134р / 33 обувь",
+                        extra: "",
+                        videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239018&hash=82ce876e4b83fae5&hd=3"
+                    },
+                    {
+                        id: "sirenko",
+                        name: "Сиренко Алиса",
+                        age: "9 лет",
+                        photo: "photos/Сиренко.jpg",
+                        details: "128 / 128р / 32 обувь",
+                        extra: "Занимается танцами с 4х лет",
+                        videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239019&hash=9824726488db86b4&hd=3"
+                    }
+                ],
                 scene: {
                     title: "1-8. ШКОЛА ИСКУССТВ. ЗА КУЛИСАМИ. ДЕНЬ 2",
                     content: `<div class="scene-action">Настя, нарядная, проходит за кулисами. Навстречу бежит Леночка в платье феи.</div>
@@ -766,6 +794,7 @@
             "Продавец": { 
                 series: 1, 
                 dates: ["02.07"], 
+                approvedProbeId: null,
                 probes: [], 
                 scene: {
                     title: "1-46 / 2-49 / 3-3. ЗАПРАВКА",
@@ -785,6 +814,7 @@
             "Заправщик": { 
                 series: 1, 
                 dates: ["02.07"], 
+                approvedProbeId: null,
                 probes: [], 
                 scene: {
                     title: "1-46. ЗАПРАВКА. ДЕНЬ 4",
@@ -798,6 +828,7 @@
             "Врач 3": { 
                 series: 2, 
                 dates: ["04.07"], 
+                approvedProbeId: null,
                 probes: [], 
                 scene: {
                     title: "2-42 / 2-45. БОЛЬНИЦА. ДЕНЬ 7",
@@ -821,6 +852,7 @@
             "Медсестра 2": { 
                 series: 2, 
                 dates: ["04.07"], 
+                approvedProbeId: null,
                 probes: [], 
                 scene: {
                     title: "2-41. БОЛЬНИЦА. У РЕГИСТРАТУРЫ. ДЕНЬ 7",
@@ -835,6 +867,7 @@
             "Медсестра 1": { 
                 series: 2, 
                 dates: ["04.07"], 
+                approvedProbeId: null,
                 probes: [], 
                 scene: {
                     title: "2-41. БОЛЬНИЦА. У РЕГИСТРАТУРЫ. ДЕНЬ 7",
@@ -846,6 +879,7 @@
             "Охранник Лескова 1": { 
                 series: 2, 
                 dates: ["20.06", "26.06", "02.07", "04.07"], 
+                approvedProbeId: null,
                 probes: [], 
                 scene: {
                     title: "2-7 / 3-9 / 4-4. ОХРАННИКИ ЛЕСКОВА",
@@ -860,6 +894,7 @@
             "Охранник Лескова 2": { 
                 series: 2, 
                 dates: ["20.06", "26.06", "02.07"], 
+                approvedProbeId: null,
                 probes: [], 
                 scene: {
                     title: "2-7 / 3-9. ОХРАННИКИ ЛЕСКОВА",
@@ -872,6 +907,7 @@
             "Дядька": { 
                 series: 3, 
                 dates: ["01.07"], 
+                approvedProbeId: null,
                 probes: [], 
                 scene: {
                     title: "3-13. ДВОР ДОМА СТРАХОВЫХ. ДЕНЬ 8",
@@ -890,6 +926,7 @@
             "Фотограф": { 
                 series: 3, 
                 dates: ["11.07"], 
+                approvedProbeId: null,
                 probes: [], 
                 scene: {
                     title: "3-38. ПАРКОВКА. ДЕНЬ 11",
@@ -904,6 +941,7 @@
             "Эксперт": { 
                 series: 4, 
                 dates: ["21.06"], 
+                approvedProbeId: null,
                 probes: [], 
                 scene: {
                     title: "4-42. КАБИНЕТ ИВАНА. НОЧЬ 12",
@@ -917,18 +955,21 @@
             "Работник Кухни": { 
                 series: 4, 
                 dates: ["26.06"], 
+                approvedProbeId: null,
                 probes: [], 
                 scene: {
                     title: "4-34 / 4-36. УСАДЬБА ЛЕСКОВА",
                     content: `<div class="scene-action">«Каблучок» Олега стоит у чёрного входа. Олег достаёт из машины ящик, несёт в подвал.</div>
 <div class="scene-action">Работник кухни скучает, подпирая притолоку, помогать не собирается.</div>
 <div class="scene-action">Олег берёт очередной ящик. Косится на работника. Тот "втыкает" в смартфон.</div>
-<div class="scene-action">Олег берёт ружьё, вешает на плечо. Кладёт в ящик фомку. Проходит мимо — работник даже не поднял головы.</div>`
+<div class="scene-action">Олег берёт ружьё, вешает на плечо. Кладёт в ящик фомку. Проходит мимо — работник даже не поднял головы.</div>
+<div class="scene-dialogue"><div class="scene-character">РАБОТНИК КУХНИ</div><div class="scene-lines">Мужик, долго ещё?</div></div>`
                 }
             },
             "Охранник Владений Лескова": { 
                 series: 4, 
                 dates: ["26.06"], 
+                approvedProbeId: null,
                 probes: [], 
                 scene: {
                     title: "4-33. УСАДЬБА ЛЕСКОВА. ДЕНЬ 12",
@@ -943,6 +984,7 @@
             "Врач 4": { 
                 series: 4, 
                 dates: ["04.07"], 
+                approvedProbeId: null,
                 probes: [], 
                 scene: {
                     title: "4-28. БОЛЬНИЦА. РЕАНИМАЦИОННЫЙ БЛОК АНИ",
@@ -958,6 +1000,7 @@
             "Врач скорой": { 
                 series: 4, 
                 dates: ["14.07"], 
+                approvedProbeId: null,
                 probes: [], 
                 scene: {
                     title: "4-24. БЕРЕГ ОЗЕРА. ДЕНЬ 12",
@@ -1111,13 +1154,21 @@
                 for (let idx = 0; idx < charData.probes.length; idx++) {
                     const probe = charData.probes[idx];
                     const photoPath = probe.photo && probe.photo.trim() !== "" ? probe.photo : "https://via.placeholder.com/200x200?text=Нет+фото";
-                    probesHtml += `<div class="probe-card">
-                            <div class="probe-photo"><img src="${escapeHtml(photoPath)}" class="probe-img" data-photo="${escapeHtml(photoPath)}"></div>
+                    const isApproved = charData.approvedProbeId === probe.id;
+                    const approvedMark = isApproved ? '<span class="approved-tag">✅ Утверждён</span>' : '';
+                    probesHtml += `
+                        <div class="probe-card ${isApproved ? 'approved-card' : ''}">
+                            <div class="probe-photo">
+                                <img src="${escapeHtml(photoPath)}" alt="${escapeHtml(probe.name)}" class="probe-img" data-photo="${escapeHtml(photoPath)}">
+                            </div>
                             <div class="probe-info">
-                                <div class="probe-name">${escapeHtml(probe.name)}</div>
+                                <div class="probe-name">${escapeHtml(probe.name)} ${approvedMark}</div>
+                                ${probe.details ? `<div class="probe-details">${escapeHtml(probe.details)}</div>` : ''}
+                                ${probe.extra ? `<div class="probe-desc">${escapeHtml(probe.extra)}</div>` : ''}
                                 <button class="watch-video-btn" data-video="${escapeHtml(probe.videoUrl || '')}">🎥 Смотреть видео</button>
                             </div>
-                        </div>`;
+                        </div>
+                    `;
                 }
             }
             probesHtml += '</div>';
@@ -1146,10 +1197,29 @@
             document.querySelectorAll('.watch-video-btn').forEach(btn => {
                 btn.addEventListener('click', () => {
                     const videoUrl = btn.getAttribute('data-video');
-                    if (videoUrl && videoUrl.trim()) openVideoModal(videoUrl);
-                    else alert('Ссылка на видео отсутствует');
+                    if (videoUrl && videoUrl.trim()) {
+                        openVideoModal(videoUrl);
+                    } else {
+                        alert('Ссылка на видео отсутствует');
+                    }
                 });
             });
+        }
+
+        function openVideoModal(videoUrl) {
+            const modal = document.getElementById('videoModal');
+            const container = document.getElementById('videoIframeContainer');
+            let embedUrl = videoUrl;
+            if (videoUrl.includes('vkvideo.ru')) {
+                embedUrl = videoUrl;
+            } else if (videoUrl.includes('youtube.com/watch?v=')) {
+                embedUrl = videoUrl.replace('watch?v=', 'embed/');
+            } else if (videoUrl.includes('youtu.be/')) {
+                const videoId = videoUrl.split('/').pop();
+                embedUrl = `https://www.youtube.com/embed/${videoId}`;
+            }
+            container.innerHTML = `<iframe src="${embedUrl}" frameborder="0" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" allowfullscreen></iframe>`;
+            modal.classList.add('active');
         }
 
         window.toggleScene = function(headerElement) {
@@ -1177,16 +1247,6 @@
             const modal = document.getElementById('imageModal');
             const fullImg = document.getElementById('fullscreenImage');
             fullImg.src = imgSrc;
-            modal.classList.add('active');
-        }
-
-        function openVideoModal(videoUrl) {
-            const modal = document.getElementById('videoModal');
-            const container = document.getElementById('videoIframeContainer');
-            let embedUrl = videoUrl;
-            if (videoUrl.includes('youtube.com/watch?v=')) embedUrl = videoUrl.replace('watch?v=', 'embed/');
-            else if (videoUrl.includes('youtu.be/')) embedUrl = `https://www.youtube.com/embed/${videoUrl.split('/').pop()}`;
-            container.innerHTML = `<iframe src="${embedUrl}" frameborder="0" allowfullscreen></iframe>`;
             modal.classList.add('active');
         }
 
