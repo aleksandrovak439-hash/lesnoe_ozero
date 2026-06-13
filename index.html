@@ -836,7 +836,7 @@
 <div class="scene-action">Она обнимает мать, в глазах слезы.</div>`
                 }
             },
-            "Учителя": {
+            "Учитель": {
                 series: 1,
                 dates: ["15.06"],
                 approvedProbeId: null,
@@ -908,7 +908,7 @@
                         id: "marie",
                         name: "Мари де Бури",
                         age: "22 года",
-                        photo: "photos/Де Бури.jpg",
+                        photo: "photos/Мари.jpg",
                         details: "175 / 50-54 / 37-40",
                         extra: "",
                         videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239050&hash=a8f4b047507df091&hd=3"
@@ -966,6 +966,42 @@
                         details: "180 / 50-52",
                         extra: "",
                         videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239052&hash=4b774b985b707b04&hd=3"
+                    },
+                    {
+                        id: "mishin",
+                        name: "Мишин Андрей",
+                        age: "",
+                        photo: "photos/Мишин.jpg",
+                        details: "178 / 50 / 44",
+                        extra: "",
+                        videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239057&hash=a4bf2e5cd9f4c41a&hd=3"
+                    },
+                    {
+                        id: "kabak",
+                        name: "Кабак Геннадий",
+                        age: "",
+                        photo: "photos/Кабак.jpg",
+                        details: "175 / 52 / 42",
+                        extra: "",
+                        videoUrl: "https://youtu.be/yL3BbLUOlt0"
+                    },
+                    {
+                        id: "pavlov",
+                        name: "Павлов Кирилл",
+                        age: "",
+                        photo: "photos/Павлов.jpg",
+                        details: "176 / 48-50 / 42",
+                        extra: "",
+                        videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239058&hash=d34a38aa50de0a6f&hd=3"
+                    },
+                    {
+                        id: "andreev",
+                        name: "Андреев Игорь",
+                        age: "",
+                        photo: "photos/Андреев.jpg",
+                        details: "182 / 52 / 44",
+                        extra: "",
+                        videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239058&hash=d34a38aa50de0a6f&hd=3"
                     }
                 ],
                 scene: null
@@ -1390,11 +1426,15 @@
                 embedUrl = videoUrl;
             } else if (videoUrl.includes('yandex.net')) {
                 embedUrl = videoUrl;
-            } else if (videoUrl.includes('youtube.com/watch?v=')) {
-                embedUrl = videoUrl.replace('watch?v=', 'embed/');
-            } else if (videoUrl.includes('youtu.be/')) {
-                const videoId = videoUrl.split('/').pop();
-                embedUrl = `https://www.youtube.com/embed/${videoId}`;
+            } else if (videoUrl.includes('youtu.be') || videoUrl.includes('youtube.com')) {
+                if (videoUrl.includes('watch?v=')) {
+                    embedUrl = videoUrl.replace('watch?v=', 'embed/');
+                } else if (videoUrl.includes('youtu.be/')) {
+                    const videoId = videoUrl.split('/').pop();
+                    embedUrl = `https://www.youtube.com/embed/${videoId}`;
+                } else {
+                    embedUrl = videoUrl;
+                }
             }
             container.innerHTML = `<iframe src="${embedUrl}" frameborder="0" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" allowfullscreen></iframe>`;
             modal.classList.add('active');
