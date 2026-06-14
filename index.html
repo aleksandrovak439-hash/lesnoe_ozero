@@ -546,6 +546,21 @@
             color: var(--text-muted);
             margin-bottom: 0.75rem;
         }
+        .probe-film-link {
+            display: inline-block;
+            background: var(--chip-bg);
+            color: var(--accent);
+            border: 1px solid var(--border-light);
+            padding: 0.3rem 0.6rem;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+        }
+        .probe-film-link:hover {
+            background: var(--accent);
+            color: white;
+        }
         .watch-video-btn {
             background: var(--accent);
             color: white;
@@ -836,7 +851,7 @@
 <div class="scene-action">Она обнимает мать, в глазах слезы.</div>`
                 }
             },
-            "Учителя": {
+            "Учитель": {
                 series: 1,
                 dates: ["15.06"],
                 approvedProbeId: null,
@@ -908,7 +923,7 @@
                         id: "marie",
                         name: "Мари де Бури",
                         age: "22 года",
-                        photo: "photos/Де Бури.jpg",
+                        photo: "photos/Мари.jpg",
                         details: "175 / 50-54 / 37-40",
                         extra: "",
                         videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239050&hash=a8f4b047507df091&hd=3"
@@ -1090,11 +1105,52 @@
 <div class="scene-dialogue"><div class="scene-character">МЕДСЕСТРА-1</div><div class="scene-lines">(в телефон)<br>Здравствуйте, Михаил Михайлович. Вы просили о состоянии здоровья Страхова сообщить... К нему сын приехал. И ещё девушка. Да, сын. Точно. Всегда рада помочь.</div></div>`
                 }
             },
-            "Охранник Лескова 1": { 
+            "Водитель охранник Лескова": { 
                 series: 2, 
                 dates: ["20.06", "26.06", "02.07", "04.07"], 
                 approvedProbeId: null,
-                probes: [], 
+                probes: [
+                    {
+                        id: "davydov",
+                        name: "Давыдов Дмитрий",
+                        age: "38 лет",
+                        photo: "photos/Давыдов.jpg",
+                        details: "192 / 58 / 46",
+                        extra: "",
+                        filmLink: "https://www.kino-teatr.ru/kino/acter/bitpart/m/ros/900491/works/",
+                        videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239074&hash=b25813b09c457862&hd=3"
+                    },
+                    {
+                        id: "kovalev",
+                        name: "Александр Ковалёв",
+                        age: "39 лет",
+                        photo: "photos/Ковалев.jpg",
+                        details: "170 / 48 / 41",
+                        extra: "",
+                        filmLink: "https://casting.filmtoolz.ru/3483718",
+                        videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239075&hd=3"
+                    },
+                    {
+                        id: "komlev",
+                        name: "Комлев Дмитрий",
+                        age: "35 лет",
+                        photo: "photos/Комлев.jpg",
+                        details: "183 / 52 / 44",
+                        extra: "",
+                        filmLink: "https://www.kino-teatr.ru/kino/acter/bitpart/m/ros/876731/bio/",
+                        videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239076&hash=dd89ad2bd3d84059&hd=3"
+                    },
+                    {
+                        id: "polozov",
+                        name: "Полозов Михаил",
+                        age: "43 года",
+                        photo: "photos/Полозов.jpg",
+                        details: "180 / 52 / 43",
+                        extra: "",
+                        filmLink: "https://www.kino-teatr.ru/kino/acter/bitpart/m/ros/515281/foto/i2/",
+                        videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239077&hash=21eef164b58025ce&hd=3"
+                    }
+                ],
                 scene: {
                     title: "2-7 / 3-9 / 4-4. ОХРАННИКИ ЛЕСКОВА",
                     content: `<div class="scene-action">Охранники Лескова выполняют приказы хозяина.</div>
@@ -1105,11 +1161,11 @@
 <div class="scene-action"><strong>4-4. ПОДВАЛ:</strong> Охранник ставит перед Егором миску с едой, снимает наручники.</div>`
                 }
             },
-            "Охранник Лескова 2": { 
+            "Водитель охранник Лескова 2": { 
                 series: 2, 
                 dates: ["20.06", "26.06", "02.07"], 
                 approvedProbeId: null,
-                probes: [], 
+                probes: [],
                 scene: {
                     title: "2-7 / 3-9. ОХРАННИКИ ЛЕСКОВА",
                     content: `<div class="scene-action"><strong>2-7. КЛАДБИЩЕ:</strong> Охранник-1 и Охранник-2 выходят из джипа.</div>
@@ -1369,15 +1425,18 @@
                     const photoPath = probe.photo && probe.photo.trim() !== "" ? probe.photo : "https://via.placeholder.com/300x300?text=Нет+фото";
                     const isApproved = charData.approvedProbeId === probe.id;
                     const approvedMark = isApproved ? '<span class="approved-tag">✅ Утверждён</span>' : '';
+                    const filmLinkHtml = probe.filmLink ? `<a href="${escapeHtml(probe.filmLink)}" target="_blank" class="probe-film-link">🎬 Фильмография</a>` : '';
                     probesHtml += `
                         <div class="probe-card ${isApproved ? 'approved-card' : ''}">
                             <div class="probe-photo">
                                 <img src="${escapeHtml(photoPath)}" alt="${escapeHtml(probe.name)}" class="probe-img" data-photo="${escapeHtml(photoPath)}">
                             </div>
                             <div class="probe-name">${escapeHtml(probe.name)} ${approvedMark}</div>
+                            ${probe.age ? `<div class="probe-details">${escapeHtml(probe.age)}</div>` : ''}
                             ${probe.details ? `<div class="probe-details">${escapeHtml(probe.details)}</div>` : ''}
                             ${probe.extra ? `<div class="probe-desc">${escapeHtml(probe.extra)}</div>` : ''}
-                            <button class="watch-video-btn" data-video="${escapeHtml(probe.videoUrl || '')}">🎥 Смотреть видео</button>
+                            ${filmLinkHtml}
+                            <button class="watch-video-btn" data-video="${escapeHtml(probe.videoUrl || '')}">🎥 Смотреть пробу</button>
                         </div>
                     `;
                 }
