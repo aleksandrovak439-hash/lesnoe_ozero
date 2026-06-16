@@ -724,6 +724,7 @@
                 max-height: 600px;
             }
             .character-item { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+            .probe-card { flex-wrap: wrap; }
         }
     </style>
 </head>
@@ -807,225 +808,11 @@
         ];
 
         const CHARACTERS_DB = {
-            "Леночка": {
+            "Продавец": {
                 series: 1,
-                dates: ["15.06"],
+                dates: ["02.07"],
                 approvedProbeId: null,
-                probes: [
-                    {
-                        id: "kokuina",
-                        name: "Кокурина Любовь",
-                        age: "8 лет",
-                        photo: "photos/Кокурина.jpg",
-                        details: "Рост 130 см, обувь 33",
-                        extra: "",
-                        videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239017&hash=29b13c99e05d5679&hd=3"
-                    },
-                    {
-                        id: "anisimova",
-                        name: "Диана Анисимова",
-                        age: "8 лет",
-                        photo: "photos/Анисимова.jpg",
-                        details: "130см / 128-134р / 33 обувь",
-                        extra: "",
-                        videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239018&hash=82ce876e4b83fae5&hd=3"
-                    },
-                    {
-                        id: "sirenko",
-                        name: "Сиренко Алиса",
-                        age: "9 лет",
-                        photo: "photos/Сиренко.jpg",
-                        details: "128 / 128р / 32 обувь",
-                        extra: "Занимается танцами с 4х лет",
-                        videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239019&hash=9824726488db86b4&hd=3"
-                    }
-                ],
-                scene: {
-                    title: "1-8. ШКОЛА ИСКУССТВ. ЗА КУЛИСАМИ. ДЕНЬ 2",
-                    content: `<div class="scene-action">Настя, нарядная, проходит за кулисами. Навстречу бежит Леночка в платье феи.</div>
-<div class="scene-dialogue"><div class="scene-character">ЛЕНОЧКА</div><div class="scene-lines">Анастасия Юрьевна, вы как принцесса из нашей сказки!</div></div>
-<div class="scene-dialogue"><div class="scene-character">НАСТЯ</div><div class="scene-lines">Спасибо, Леночка! Про носочек помнишь? Соберись!</div></div>
-<div class="scene-action">Леночка тут же серьезно начинает тянуть носочек изо всех сил.</div>
-<div class="scene-dialogue"><div class="scene-character">ВАЛЕНТИНА СЕРГЕЕВНА</div><div class="scene-lines">(уважительно-шутливо)<br>Анастасия Юрьевна!</div></div>
-<div class="scene-dialogue"><div class="scene-character">НАСТЯ</div><div class="scene-lines">Мама! Ты пришла? Спаси-и-ибо!</div></div>
-<div class="scene-action">Она обнимает мать, в глазах слезы.</div>`
-                }
-            },
-            "Учитель": {
-                series: 1,
-                dates: ["15.06"],
-                approvedProbeId: null,
-                probes: [
-                    {
-                        id: "orlova",
-                        name: "Орлова Людмила",
-                        age: "47 лет",
-                        photo: "photos/Орлова.jpg",
-                        details: "164 / 44 / 37",
-                        extra: "",
-                        videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239025&hash=be90f11c5807c6a9&hd=3"
-                    },
-                    {
-                        id: "shornikova",
-                        name: "Шорникова Элла",
-                        age: "",
-                        photo: "photos/Шорникова.jpg",
-                        details: "170 / 44 / 38",
-                        extra: "",
-                        videoUrl: "https://runtime.video.cloud.yandex.net/player/video/vplvwae52myj22yuwjkd?autoplay=0&mute=0"
-                    },
-                    {
-                        id: "egorova",
-                        name: "Егорова Елена",
-                        age: "34 года",
-                        photo: "photos/Егорова.jpg",
-                        details: "172 / 42 / 37",
-                        extra: "",
-                        videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239054&hash=9a68aa36117bd473&hd=3"
-                    },
-                    {
-                        id: "smorchkova",
-                        name: "Сморчкова Светлана",
-                        age: "",
-                        photo: "photos/Сморчкова.jpg",
-                        details: "172 / 42-44 / 39",
-                        extra: "",
-                        videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239021&hash=49da8d111b19c768&hd=3"
-                    },
-                    {
-                        id: "kuprin",
-                        name: "Куприн Дмитрий",
-                        age: "",
-                        photo: "photos/Куприн.jpg",
-                        details: "170 / 48 / 40",
-                        extra: "",
-                        videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239022&hash=694fc63e87a73d37&hd=3"
-                    },
-                    {
-                        id: "tokareva",
-                        name: "Токарева Мария",
-                        age: "",
-                        photo: "photos/Токарева.jpg",
-                        details: "",
-                        extra: "",
-                        videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239027&hash=38605a1745548d11&hd=3"
-                    },
-                    {
-                        id: "titovich",
-                        name: "Титович Наталья",
-                        age: "40 лет",
-                        photo: "photos/Титович.jpg",
-                        details: "160 / 44 / 38",
-                        extra: "",
-                        videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239053&hash=5feffcdde78e8d86&hd=3"
-                    },
-                    {
-                        id: "marie",
-                        name: "Мари де Бури",
-                        age: "22 года",
-                        photo: "photos/Мари.jpg",
-                        details: "175 / 50-54 / 37-40",
-                        extra: "",
-                        videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239050&hash=a8f4b047507df091&hd=3"
-                    },
-                    {
-                        id: "sharganova",
-                        name: "Шарганова Любовь",
-                        age: "",
-                        photo: "photos/Шарганова.jpg",
-                        details: "170 / 48 / 41",
-                        extra: "",
-                        videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239055&hash=5e3a3d20b46dac64&hd=3"
-                    },
-                    {
-                        id: "dmitriev",
-                        name: "Дмитриев Михаил",
-                        age: "",
-                        photo: "photos/Дмитриев.jpg",
-                        details: "",
-                        extra: "",
-                        videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239056&hash=a24a8079ab44f9e8&hd=3"
-                    },
-                    {
-                        id: "kushniruk",
-                        name: "Кушнирук Анастасия",
-                        age: "27 лет",
-                        photo: "photos/Кушнирук.jpg",
-                        details: "",
-                        extra: "",
-                        videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239020&hash=de0c4cc7b0e89751&hd=3"
-                    },
-                    {
-                        id: "umyarov",
-                        name: "Умяров Артем",
-                        age: "",
-                        photo: "photos/Умяров.jpg",
-                        details: "",
-                        extra: "",
-                        videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239024&hash=bd7d709fbc79190b&hd=3"
-                    },
-                    {
-                        id: "tarasov",
-                        name: "Тарасов Глеб",
-                        age: "43 года",
-                        photo: "photos/Тарасов.jpg",
-                        details: "175 / 48 / 42",
-                        extra: "",
-                        videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239023&hash=e30eb2b0c07aa89e&hd=3"
-                    },
-                    {
-                        id: "kulakov",
-                        name: "Кулаков Юрий",
-                        age: "",
-                        photo: "photos/Кулаков.jpg",
-                        details: "180 / 50-52",
-                        extra: "",
-                        videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239052&hash=4b774b985b707b04&hd=3"
-                    },
-                    {
-                        id: "mishin",
-                        name: "Мишин Андрей",
-                        age: "",
-                        photo: "photos/Мишин.jpg",
-                        details: "178 / 50 / 44",
-                        extra: "",
-                        videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239057&hash=a4bf2e5cd9f4c41a&hd=3"
-                    },
-                    {
-                        id: "kabak",
-                        name: "Кабак Геннадий",
-                        age: "",
-                        photo: "photos/Кабак.jpg",
-                        details: "175 / 52 / 42",
-                        extra: "",
-                        videoUrl: "https://youtu.be/yL3BbLUOlt0"
-                    },
-                    {
-                        id: "pavlov",
-                        name: "Павлов Кирилл",
-                        age: "",
-                        photo: "photos/Павлов.jpg",
-                        details: "176 / 48-50 / 42",
-                        extra: "",
-                        videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239058&hash=d34a38aa50de0a6f&hd=3"
-                    },
-                    {
-                        id: "andreev",
-                        name: "Андреев Игорь",
-                        age: "",
-                        photo: "photos/Андреев.jpg",
-                        details: "182 / 52 / 44",
-                        extra: "",
-                        videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239059&hash=e271194a11a3733c&hd=3"
-                    }
-                ],
-                scene: null
-            },
-            "Продавец": { 
-                series: 1, 
-                dates: ["02.07"], 
-                approvedProbeId: null,
-                probes: [], 
+                probes: [],
                 scene: {
                     title: "1-46 / 2-49 / 3-3. ЗАПРАВКА",
                     content: `<div class="scene-action"><strong>1-46. ЗАПРАВКА. ДЕНЬ 4:</strong> Егор стоит, отвернувшись от кассира, сняв очки и опустив маску, прихлёбывает кофе. Работает телевизор.</div>
@@ -1041,11 +828,11 @@
 <div class="scene-dialogue"><div class="scene-character">РАБОТНИЦА</div><div class="scene-lines">Только над кассами и у выхода. Девочка зашла с мальчиком, а потом — пропала.</div></div>`
                 }
             },
-            "Заправщик": { 
-                series: 1, 
-                dates: ["02.07"], 
+            "Заправщик": {
+                series: 1,
+                dates: ["02.07"],
                 approvedProbeId: null,
-                probes: [], 
+                probes: [],
                 scene: {
                     title: "1-46. ЗАПРАВКА. ДЕНЬ 4",
                     content: `<div class="scene-action">Егор стоит, отвернувшись от кассира, прихлёбывает кофе.</div>
@@ -1054,11 +841,11 @@
 <div class="scene-action">Работник заправки, который подметал зал, отвлекается на шум, недовольно цокает, берёт тряпку...</div>`
                 }
             },
-            "Врач 3": { 
-                series: 2, 
-                dates: ["04.07"], 
+            "Врач 3": {
+                series: 2,
+                dates: ["04.07"],
                 approvedProbeId: null,
-                probes: [], 
+                probes: [],
                 scene: {
                     title: "2-42 / 2-45. БОЛЬНИЦА. ДЕНЬ 7",
                     content: `<div class="scene-action"><strong>2-42. ПАЛАТА АЛЕКСЕЯ ПЕТРОВИЧА:</strong> Алексей Петрович лежит в больничной постели, подключенный к прибору. В палату заглядывает Настя.</div>
@@ -1078,11 +865,11 @@
 <div class="scene-action">Врач уходит. Данила обращается к Насте: «Девочку, конечно, мы заберем». Лиза возмущается. Настя ищет Аню — её нет.</div>`
                 }
             },
-            "Медсестра 2": { 
-                series: 2, 
-                dates: ["04.07"], 
+            "Медсестра 2": {
+                series: 2,
+                dates: ["04.07"],
                 approvedProbeId: null,
-                probes: [], 
+                probes: [],
                 scene: {
                     title: "2-41. БОЛЬНИЦА. У РЕГИСТРАТУРЫ. ДЕНЬ 7",
                     content: `<div class="scene-action">Настя с Аней заглядывают в регистратуру.</div>
@@ -1093,11 +880,11 @@
 <div class="scene-action">Все уходят. Медсестра-1 звонит по телефону.</div>`
                 }
             },
-            "Медсестра 1": { 
-                series: 2, 
-                dates: ["04.07"], 
+            "Медсестра 1": {
+                series: 2,
+                dates: ["04.07"],
                 approvedProbeId: null,
-                probes: [], 
+                probes: [],
                 scene: {
                     title: "2-41. БОЛЬНИЦА. У РЕГИСТРАТУРЫ. ДЕНЬ 7",
                     content: `<div class="scene-dialogue"><div class="scene-character">МЕДСЕСТРА-1</div><div class="scene-lines">Да куда ж вы толпой-то к нему? По очереди хотя бы. И бахилы наденьте.</div></div>
@@ -1105,9 +892,9 @@
 <div class="scene-dialogue"><div class="scene-character">МЕДСЕСТРА-1</div><div class="scene-lines">(в телефон)<br>Здравствуйте, Михаил Михайлович. Вы просили о состоянии здоровья Страхова сообщить... К нему сын приехал. И ещё девушка. Да, сын. Точно. Всегда рада помочь.</div></div>`
                 }
             },
-            "Водитель охранник Лескова": { 
-                series: 2, 
-                dates: ["20.06", "26.06", "02.07", "04.07"], 
+            "Водитель охранник Лескова": {
+                series: 2,
+                dates: ["20.06", "26.06", "02.07", "04.07"],
                 approvedProbeId: null,
                 probes: [
                     {
@@ -1149,35 +936,62 @@
                         extra: "",
                         filmLink: "https://www.kino-teatr.ru/kino/acter/bitpart/m/ros/515281/foto/i2/",
                         videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239077&hash=21eef164b58025ce&hd=3"
+                    },
+                    {
+                        id: "bogdanov",
+                        name: "Богданов Антон",
+                        age: "37 лет",
+                        photo: "photos/Богданов.jpg",
+                        details: "",
+                        extra: "",
+                        filmLink: "https://ftoolz.ru/4020591/",
+                        videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239078&hd=3"
                     }
                 ],
                 scene: {
-                    title: "2-7 / 3-9 / 4-4. ОХРАННИКИ ЛЕСКОВА",
-                    content: `<div class="scene-action">Охранники Лескова выполняют приказы хозяина.</div>
-<div class="scene-action"><strong>2-7. КЛАДБИЩЕ:</strong> Охранник-1 и Охранник-2 выходят из джипа. Один достаёт огромный букет с чёрной лентой.</div>
-<div class="scene-dialogue"><div class="scene-character">ЛЕСКОВ</div><div class="scene-lines">Ждите здесь. Я сам.</div></div>
-<div class="scene-action"><strong>2-49. ЗАПРАВКА:</strong> Охранник зажимает рот Ане и уносит её.</div>
-<div class="scene-action"><strong>3-9. ГРОТ:</strong> Охранник хватает Егора сзади, заламывает руки.</div>
-<div class="scene-action"><strong>4-4. ПОДВАЛ:</strong> Охранник ставит перед Егором миску с едой, снимает наручники.</div>`
+                    title: "3-10. ЛЕС. САЛОН АВТОМОБИЛЯ ЛЕСКОВА. ДЕНЬ 8",
+                    content: `
+                        <div class="scene-action">Егор порывисто обнимает спящую Аню, она просыпается.</div>
+                        <div class="scene-dialogue"><div class="scene-character">АНЯ</div><div class="scene-lines">Папа! Папочка! Я тебя нашла! Я знала, что ты живой! Ты же приходил ко мне! А никто не верил...</div></div>
+                        <div class="scene-action">Егор с трудом глотает слёзы, целует её и обнимает.</div>
+                        <div class="scene-dialogue"><div class="scene-character">ЕГОР</div><div class="scene-lines">Погоди, Анют, послушай. Да, я приходил, оставил важный документ - тебе на будущее. И скоро вы с дедом получите деньги за мою смерть. Понимаешь?</div></div>
+                        <div class="scene-action">Аня серьёзно слушает, вникает.</div>
+                        <div class="scene-dialogue"><div class="scene-character">ЕГОР</div><div class="scene-lines">В общем, то, что я жив, — это наш с тобой самый большой секрет, дочка. Тайны ты хранить умеешь! Даже маме не выдала, какой подарок я ей приготовил на день рождения...</div></div>
+                        <div class="scene-dialogue"><div class="scene-character">АНЯ</div><div class="scene-lines">Жалко, что мамочка не смогла полетать на том воздушном шаре. Это был её последний день рождения...</div></div>
+                        <div class="scene-action">Егор сгребает дочь в охапку, качает, утешая, в душе воя.</div>
+                        <div class="scene-dialogue"><div class="scene-character">ЕГОР</div><div class="scene-lines">Потерпи, малыш. Я что-нибудь придумаю и вернусь за тобой. Только никому ни слова! Клянись!</div></div>
+                        <div class="scene-dialogue"><div class="scene-character">АНЯ (поднимает ладошку)</div><div class="scene-lines">Клянусь! Погоди, надо кулачками. Вот так...</div></div>
+                        <div class="scene-action">Аня складывает кулачок себе и отцу — стучат друг об друга.</div>
+                        <div class="scene-dialogue"><div class="scene-character">ОХРАННИК 1</div><div class="scene-lines">Выходи.</div></div>
+                        <div class="scene-action">Егор улыбается, чмокает её и выходит. Аня смотрит, как его уводит охранник. Водитель с переднего сидения обращается к Ане.</div>
+                        <div class="scene-dialogue"><div class="scene-character">ВОДИТЕЛЬ-ОХРАННИК</div><div class="scene-lines">Ну, что? Не врали мы тебе, что мы папины друзья? Главное, ты никому ничего не говори! Тогда всё в порядке будет с папой твоим.</div></div>
+                        <div class="scene-action">Аня смотрит настороженно, кивает.</div>
+                        <div class="scene-action" style="margin-top:1rem; font-style:italic; color:var(--text-muted);">Также водитель-охранник присутствует в сценах: 1-27, 1-28, 2-6, 2-7, 2-9, 2-44, 2-46, 2-49, 4-45 (без слов).</div>
+                    `
                 }
             },
-            "Водитель охранник Лескова 2": { 
-                series: 2, 
-                dates: ["20.06", "26.06", "02.07"], 
+            "Охранник Лескова": {
+                series: 2,
+                dates: ["20.06", "26.06", "02.07"],
                 approvedProbeId: null,
                 probes: [],
                 scene: {
-                    title: "2-7 / 3-9. ОХРАННИКИ ЛЕСКОВА",
-                    content: `<div class="scene-action"><strong>2-7. КЛАДБИЩЕ:</strong> Охранник-1 и Охранник-2 выходят из джипа.</div>
-<div class="scene-action"><strong>3-9. ГРОТ:</strong> Охранник держит Егора, пока Лесков глумится.</div>
-<div class="scene-dialogue"><div class="scene-character">ЛЕСКОВ</div><div class="scene-lines">Будешь мне служить! И земли отдашь батины, понял?!</div></div>`
+                    title: "3-10 / 4-45. ОХРАННИК ЛЕСКОВА",
+                    content: `
+                        <div class="scene-action"><strong>3-10. ЛЕС. САЛОН АВТОМОБИЛЯ ЛЕСКОВА. ДЕНЬ 8</strong></div>
+                        <div class="scene-dialogue"><div class="scene-character">ОХРАННИК 1</div><div class="scene-lines">Выходи.</div></div>
+                        <div class="scene-action"><strong>4-45. УСАДЬБА ЛЕСКОВА. ПОДВАЛ. НОЧЬ 12</strong></div>
+                        <div class="scene-action">Охранник вносит стул, затем выходит за дверь.</div>
+                        <div class="scene-dialogue"><div class="scene-character">ОХРАННИК</div><div class="scene-lines">Я за дверью. Вдруг, если что.</div></div>
+                        <div class="scene-action" style="margin-top:1rem; font-style:italic; color:var(--text-muted);">Также появляется в сцене 2-49 (похищение Ани) и других эпизодах без реплик.</div>
+                    `
                 }
             },
-            "Дядька": { 
-                series: 3, 
-                dates: ["01.07"], 
+            "Дядька": {
+                series: 3,
+                dates: ["01.07"],
                 approvedProbeId: null,
-                probes: [], 
+                probes: [],
                 scene: {
                     title: "3-13. ДВОР ДОМА СТРАХОВЫХ. ДЕНЬ 8",
                     content: `<div class="scene-action">Старенькая девятка тормозит. Из неё выходит дядька, открывает дверцу, выпуская Аню.</div>
@@ -1192,11 +1006,11 @@
 <div class="scene-dialogue"><div class="scene-character">ОЛЕГ</div><div class="scene-lines">(бормочет)<br>Встретились, значит. Вот же Егор…</div></div>`
                 }
             },
-            "Фотограф": { 
-                series: 3, 
-                dates: ["11.07"], 
+            "Фотограф": {
+                series: 3,
+                dates: ["11.07"],
                 approvedProbeId: null,
-                probes: [], 
+                probes: [],
                 scene: {
                     title: "3-38. ПАРКОВКА. ДЕНЬ 11",
                     content: `<div class="scene-action">Настя с папкой документов выходит из опеки. Раздаются звуки затвора — её фотографируют из машины.</div>
@@ -1206,11 +1020,11 @@
 <div class="scene-action">Павел уезжает. Настя звонит Даниле. Снова звуки фотоаппарата.</div>`
                 }
             },
-            "Эксперт": { 
-                series: 4, 
-                dates: ["21.06"], 
+            "Эксперт": {
+                series: 4,
+                dates: ["21.06"],
                 approvedProbeId: null,
-                probes: [], 
+                probes: [],
                 scene: {
                     title: "4-42. КАБИНЕТ ИВАНА. НОЧЬ 12",
                     content: `<div class="scene-action">Иван смотрит на снимки Насти на экране. На стене — фотографии семьи Страховых и Лескова.</div>
@@ -1220,11 +1034,11 @@
 <div class="scene-action">Иван читает документ, глаза лезут на лоб. Он смотрит на фото Данилы, зачёркивает знак вопроса.</div>`
                 }
             },
-            "Работник Кухни": { 
-                series: 4, 
-                dates: ["26.06"], 
+            "Работник Кухни": {
+                series: 4,
+                dates: ["26.06"],
                 approvedProbeId: null,
-                probes: [], 
+                probes: [],
                 scene: {
                     title: "4-34 / 4-36. УСАДЬБА ЛЕСКОВА",
                     content: `<div class="scene-action">«Каблучок» Олега стоит у чёрного входа. Олег достаёт из машины ящик, несёт в подвал.</div>
@@ -1234,11 +1048,11 @@
 <div class="scene-dialogue"><div class="scene-character">РАБОТНИК КУХНИ</div><div class="scene-lines">Мужик, долго ещё?</div></div>`
                 }
             },
-            "Охранник Владений Лескова": { 
-                series: 4, 
-                dates: ["26.06"], 
+            "Охранник Владений Лескова": {
+                series: 4,
+                dates: ["26.06"],
                 approvedProbeId: null,
-                probes: [], 
+                probes: [],
                 scene: {
                     title: "4-33. УСАДЬБА ЛЕСКОВА. ДЕНЬ 12",
                     content: `<div class="scene-action">«Каблучок» Олега подъезжает к воротам усадьбы.</div>
@@ -1249,11 +1063,11 @@
 <div class="scene-action">Он обходит усадьбу, замечает камеру на заборе. Звонит телефон — Олег прячется.</div>`
                 }
             },
-            "Врач 4": { 
-                series: 4, 
-                dates: ["04.07"], 
+            "Врач 4": {
+                series: 4,
+                dates: ["04.07"],
                 approvedProbeId: null,
-                probes: [], 
+                probes: [],
                 scene: {
                     title: "4-28. БОЛЬНИЦА. РЕАНИМАЦИОННЫЙ БЛОК АНИ",
                     content: `<div class="scene-action">Настя и Данила стоят в коридоре, смотрят на Аню. Приходит врач.</div>
@@ -1265,11 +1079,11 @@
 <div class="scene-action">Настя и Данила переглядываются. Настю колотит. Данила обнимает её.</div>`
                 }
             },
-            "Врач скорой": { 
-                series: 4, 
-                dates: ["14.07"], 
+            "Врач скорой": {
+                series: 4,
+                dates: ["14.07"],
                 approvedProbeId: null,
-                probes: [], 
+                probes: [],
                 scene: {
                     title: "4-24. БЕРЕГ ОЗЕРА. ДЕНЬ 12",
                     content: `<div class="scene-action">На берегу стоит машина скорой. Анечка жива, отплёвывает воду. Врачи скорой оказывают помощь.</div>
