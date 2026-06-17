@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Лесное озеро — Кастинг</title>
     <style>
-        /* --- Стили (полностью сохранены) --- */
+        /* (стили полностью сохранены — такие же, как в предыдущем ответе) */
         * {
             margin: 0;
             padding: 0;
@@ -227,6 +227,23 @@
         }
         .approved-contact-btn:hover {
             background: var(--accent-hover);
+        }
+        .approved-tg-btn {
+            background: var(--chip-bg);
+            color: var(--accent);
+            border: 1px solid var(--border-light);
+            padding: 0.3rem 0.8rem;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-top: 0.3rem;
+        }
+        .approved-tg-btn:hover {
+            background: var(--accent);
+            color: white;
         }
         .empty-approved {
             color: var(--text-muted);
@@ -697,6 +714,7 @@
                 <div id="approvedListContainer"></div>
             </div>
         </div>
+        <div id="extrasContainer"></div>
         <div class="series-section-title">📺 По сериям</div>
         <div id="seriesContainer"></div>
     </main>
@@ -749,10 +767,80 @@
                 photo: "photos/Сиренко.jpg",
                 details: "128 / 128р / 32 обувь",
                 contacts: []
+            },
+            {
+                id: "erokhin",
+                role: "ОХРАННИК ЛЕСКОВА",
+                name: "Ерохин Александр",
+                age: "29 лет",
+                photo: "photos/Ерохин.jpg",
+                details: "Рост 176 / одежда 50 / обувь 42-43 • Грудь 110 / талия 85 / бедра 100",
+                contacts: [
+                    { type: "phone", value: "89650263610" },
+                    { type: "telegram", value: "@AleksanderE1996" }
+                ]
             }
         ];
 
         const CHARACTERS_DB = {
+            "Флешбэк — Маленькая Настя": {
+                series: 0,
+                dates: [],
+                approvedProbeId: null,
+                probes: [
+                    {
+                        id: "shlykova",
+                        name: "Шлыкова Алёна",
+                        age: "7 лет",
+                        photo: "photos/Шлыкова.jpg",
+                        details: "Рост 123, размер одежды 128-134, обувь 32",
+                        extra: "",
+                        filmLink: "",
+                        videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239091&hash=d7a4d6dfa723e9e1&hd=4"
+                    },
+                    {
+                        id: "petrova",
+                        name: "Алиса Петрова",
+                        age: "10 лет",
+                        photo: "photos/Петрова.jpg",
+                        details: "136 / 134-140 / 35",
+                        extra: "",
+                        filmLink: "",
+                        videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239090&hash=a63868c524bd0b23&hd=4"
+                    },
+                    {
+                        id: "bradulina",
+                        name: "Брадулина Даша",
+                        age: "10 лет",
+                        photo: "photos/Брадулина.jpg",
+                        details: "Рост 140",
+                        extra: "",
+                        filmLink: "",
+                        videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239089&hash=a97b38a159df3a0b&hd=4"
+                    },
+                    {
+                        id: "popova",
+                        name: "Попова Алёна",
+                        age: "",
+                        photo: "photos/Попова.jpg",
+                        details: "Рост 140",
+                        extra: "",
+                        filmLink: "",
+                        videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239092&hash=5acbaf62935ebc73&hd=3"
+                    },
+                    {
+                        id: "dirko",
+                        name: "Дирко Дарина",
+                        age: "7 лет",
+                        photo: "photos/Дирко.jpg",
+                        details: "Рост 127, цвет глаз светло-серые (серо-голубые)",
+                        extra: "Визитку смогут записать 18.06",
+                        filmLink: "",
+                        videoUrl: ""
+                    }
+                ],
+                scene: null
+            },
             "Продавец": {
                 series: 1,
                 dates: ["02.07"],
@@ -843,16 +931,6 @@
                 approvedProbeId: null,
                 probes: [
                     {
-                        id: "davydov",
-                        name: "Давыдов Дмитрий",
-                        age: "38 лет",
-                        photo: "photos/Давыдов.jpg",
-                        details: "192 / 58 / 46",
-                        extra: "",
-                        filmLink: "https://www.kino-teatr.ru/kino/acter/bitpart/m/ros/900491/works/",
-                        videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239074&hash=b25813b09c457862&hd=3"
-                    },
-                    {
                         id: "kovalev",
                         name: "Александр Ковалёв",
                         age: "39 лет",
@@ -915,59 +993,92 @@
                     `
                 }
             },
-            "Охранник Лескова": {
-                series: 2,
-                dates: ["20.06", "26.06", "02.07"],
-                approvedProbeId: null,
-                probes: [
-                    {
-                        id: "bashanov",
-                        name: "Башанов Антон Владимирович",
-                        age: "46 лет",
-                        photo: "photos/Башанов.jpg",
-                        details: "195 / 58 (плечи 62) / 46",
-                        extra: "",
-                        filmLink: "",
-                        videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239079&hash=c91c8ccecc2ec412&hd=3"
-                    },
-                    {
-                        id: "erokhin",
-                        name: "Ерохин Александр",
-                        age: "29 лет",
-                        photo: "photos/Ерохин.jpg",
-                        details: "Рост 176 / одежда 50 / обувь 42-43 • Грудь 110 / талия 85 / бедра 100",
-                        extra: "",
-                        filmLink: "",
-                        videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239080&hash=c22049c6990dcb3b&hd=3"
-                    },
-                    {
-                        id: "chistyakov",
-                        name: "Чистяков Александр",
-                        age: "43 года",
-                        photo: "photos/Чистяков.jpg",
-                        details: "Рост 182 / одежда 54 / обувь 44",
-                        extra: "",
-                        filmLink: "",
-                        videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239081&hash=22ea3efa0f7400f2&hd=3"
-                    }
-                ],
-                scene: {
-                    title: "3-10 / 4-45. ОХРАННИК ЛЕСКОВА",
-                    content: `
-                        <div class="scene-action"><strong>3-10. ЛЕС. САЛОН АВТОМОБИЛЯ ЛЕСКОВА. ДЕНЬ 8</strong></div>
-                        <div class="scene-dialogue"><div class="scene-character">ОХРАННИК 1</div><div class="scene-lines">Выходи.</div></div>
-                        <div class="scene-action"><strong>4-45. УСАДЬБА ЛЕСКОВА. ПОДВАЛ. НОЧЬ 12</strong></div>
-                        <div class="scene-action">Охранник вносит стул, затем выходит за дверь.</div>
-                        <div class="scene-dialogue"><div class="scene-character">ОХРАННИК</div><div class="scene-lines">Я за дверью. Вдруг, если что.</div></div>
-                        <div class="scene-action" style="margin-top:1rem; font-style:italic; color:var(--text-muted);">Также появляется в сцене 2-49 (похищение Ани) и других эпизодах без реплик.</div>
-                    `
-                }
-            },
             "Дядька": {
                 series: 3,
                 dates: ["01.07"],
                 approvedProbeId: null,
-                probes: [],
+                probes: [
+                    {
+                        id: "korpachev",
+                        name: "Корпачев Олег",
+                        age: "",
+                        photo: "photos/Корпачев.jpg",
+                        details: "180 / 50 / 43",
+                        extra: "",
+                        filmLink: "",
+                        videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239093&hash=839bfc70bb5469fa&hd=3"
+                    },
+                    {
+                        id: "lokshin",
+                        name: "Локшин Михаил",
+                        age: "",
+                        photo: "photos/Локшин.jpg",
+                        details: "",
+                        extra: "",
+                        filmLink: "",
+                        videoUrl: "https://vkvideo.ru/video-221927186_456239100?list=ln-exkjZGlZlIM8OSAWQQ"
+                    },
+                    {
+                        id: "frolov",
+                        name: "Евгений Фролов",
+                        age: "",
+                        photo: "photos/Фролов.jpg",
+                        details: "",
+                        extra: "",
+                        filmLink: "",
+                        videoUrl: "https://vkvideo.ru/video-221927186_456239099?list=ln-WFbIAulZaW5ZCZMpcs"
+                    },
+                    {
+                        id: "kucherov",
+                        name: "Кучеров Сергей",
+                        age: "52 года",
+                        photo: "photos/Кучеров.jpg",
+                        details: "185 / 54-56 / 43",
+                        extra: "",
+                        filmLink: "",
+                        videoUrl: "https://vkvideo.ru/video-221927186_456239098?list=ln-tSbTKh6Mz5csFzaRx5"
+                    },
+                    {
+                        id: "dolzhenkov",
+                        name: "Долженков Дмитрий Владимирович",
+                        age: "47 лет",
+                        photo: "photos/Долженков.jpg",
+                        details: "158 / 48 / 41",
+                        extra: "",
+                        filmLink: "",
+                        videoUrl: "https://vkvideo.ru/video-221927186_456239097?list=ln-xI7KT2HLgRaQzq0n42"
+                    },
+                    {
+                        id: "kazenkin",
+                        name: "Казенкин Александр",
+                        age: "",
+                        photo: "photos/Казенкин.jpg",
+                        details: "176 / 50 / 42",
+                        extra: "",
+                        filmLink: "",
+                        videoUrl: "https://vkvideo.ru/video-221927186_456239096?list=ln-NzNMClEmwhYof01edU"
+                    },
+                    {
+                        id: "toshchevikov",
+                        name: "Тощевиков Алексей",
+                        age: "44 года",
+                        photo: "photos/Тощевиков.jpg",
+                        details: "Рост 180 / одежда 50 / обувь 42",
+                        extra: "",
+                        filmLink: "",
+                        videoUrl: "https://vkvideo.ru/video-221927186_456239095?list=ln-ZFqnmWlUtb9952J8Rb"
+                    },
+                    {
+                        id: "shaposhnikov",
+                        name: "Шапошников Алексей",
+                        age: "",
+                        photo: "photos/Шапошников.jpg",
+                        details: "",
+                        extra: "",
+                        filmLink: "",
+                        videoUrl: "https://vkvideo.ru/video-221927186_456239094?list=ln-FU0fA6VZ8hSVOvJFGo"
+                    }
+                ],
                 scene: {
                     title: "3-13. ДВОР ДОМА СТРАХОВЫХ. ДЕНЬ 8",
                     content: `<div class="scene-action">Старенькая девятка тормозит. Из неё выходит дядька, открывает дверцу, выпуская Аню.</div>
@@ -982,25 +1093,102 @@
 <div class="scene-dialogue"><div class="scene-character">ОЛЕГ</div><div class="scene-lines">(бормочет)<br>Встретились, значит. Вот же Егор…</div></div>`
                 }
             },
-            "Фотограф": {
-                series: 3,
-                dates: ["11.07"],
-                approvedProbeId: null,
-                probes: [],
-                scene: {
-                    title: "3-38. ПАРКОВКА. ДЕНЬ 11",
-                    content: `<div class="scene-action">Настя с папкой документов выходит из опеки. Раздаются звуки затвора — её фотографируют из машины.</div>
-<div class="scene-action">Она подходит к своей машине, у которой открыт капот. Над ним возится Паша.</div>
-<div class="scene-dialogue"><div class="scene-character">НАСТЯ</div><div class="scene-lines">Всё, я везде расписалась! Мне ещё за Аней! Поехали?</div></div>
-<div class="scene-dialogue"><div class="scene-character">ПАША</div><div class="scene-lines">Утечка тормозной жидкости. Метнусь до сервиса, подождёшь?</div></div>
-<div class="scene-action">Павел уезжает. Настя звонит Даниле. Снова звуки фотоаппарата.</div>`
-                }
-            },
             "Эксперт": {
                 series: 4,
                 dates: ["21.06"],
                 approvedProbeId: null,
-                probes: [],
+                probes: [
+                    {
+                        id: "orlov",
+                        name: "Орлов Владислав",
+                        age: "",
+                        photo: "photos/Орлов.jpg",
+                        details: "",
+                        extra: "",
+                        filmLink: "",
+                        videoUrl: "https://vkvideo.ru/video-221927186_456239108?list=ln-zVGOZEbrdFbzpaAY0q"
+                    },
+                    {
+                        id: "sidorov",
+                        name: "Сидоров Константин",
+                        age: "38 лет",
+                        photo: "photos/Сидоров.jpg",
+                        details: "187 / 48-50 / 43",
+                        extra: "",
+                        filmLink: "",
+                        videoUrl: "https://vkvideo.ru/video-221927186_456239107?list=ln-9h2QQVYWu1LomCAlxI"
+                    },
+                    {
+                        id: "volgin",
+                        name: "Павел Волгин",
+                        age: "",
+                        photo: "photos/Волгин.jpg",
+                        details: "",
+                        extra: "",
+                        filmLink: "",
+                        videoUrl: "https://vkvideo.ru/video-221927186_456239106?list=ln-eTZlp744QqPcxoV1TN"
+                    },
+                    {
+                        id: "alekseev",
+                        name: "Алексеев Денис",
+                        age: "38 лет",
+                        photo: "photos/Алексеев.jpg",
+                        details: "180 / 52 / 45",
+                        extra: "",
+                        filmLink: "",
+                        videoUrl: "https://vkvideo.ru/video-221927186_456239105?list=ln-rc6dOcCoZMcL4rn9r7"
+                    },
+                    {
+                        id: "emelyanov",
+                        name: "Емельянов Александр",
+                        age: "",
+                        photo: "photos/Емельянов.jpg",
+                        details: "",
+                        extra: "",
+                        filmLink: "",
+                        videoUrl: "https://vkvideo.ru/video-221927186_456239104?list=ln-poWd8eIrPwDz31VKpn"
+                    },
+                    {
+                        id: "aleksandrov",
+                        name: "Александров Антон",
+                        age: "",
+                        photo: "photos/Александров.jpg",
+                        details: "189 / 52-54 / 43",
+                        extra: "",
+                        filmLink: "",
+                        videoUrl: "https://vkvideo.ru/video-221927186_456239103?list=ln-dnZMtaLfqEYC1DDRe8"
+                    },
+                    {
+                        id: "konstantinovskiy",
+                        name: "Константиновский Иван",
+                        age: "47 лет",
+                        photo: "photos/Константиновский.jpg",
+                        details: "178 / 78 / 48-50",
+                        extra: "",
+                        filmLink: "",
+                        videoUrl: "https://vkvideo.ru/video-221927186_456239102?list=ln-TNFTGg7AJXgER8zSrw"
+                    },
+                    {
+                        id: "vasilev",
+                        name: "Васильев Алексей",
+                        age: "40-50 (игровой)",
+                        photo: "photos/Васильев.jpg",
+                        details: "183 / 50 / 43",
+                        extra: "",
+                        filmLink: "",
+                        videoUrl: "https://vkvideo.ru/video-221927186_456239101?list=ln-33lWr3kdixlrUZb3Rh"
+                    },
+                    {
+                        id: "singov",
+                        name: "Синьгов Владимир",
+                        age: "",
+                        photo: "photos/Синьгов.jpg",
+                        details: "173 / 50 / 42",
+                        extra: "",
+                        filmLink: "",
+                        videoUrl: "https://vk.com/video_ext.php?oid=2943640&id=456240411&hd=3"
+                    }
+                ],
                 scene: {
                     title: "4-42. КАБИНЕТ ИВАНА. НОЧЬ 12",
                     content: `<div class="scene-action">Иван смотрит на снимки Насти на экране. На стене — фотографии семьи Страховых и Лескова.</div>
@@ -1014,7 +1202,68 @@
                 series: 4,
                 dates: ["26.06"],
                 approvedProbeId: null,
-                probes: [],
+                probes: [
+                    {
+                        id: "dranitsa",
+                        name: "Драница Виталий",
+                        age: "47 лет",
+                        photo: "photos/Драница.jpg",
+                        details: "Рост 175 / одежда 52 / обувь 40",
+                        extra: "",
+                        filmLink: "",
+                        videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239088&hash=23b8ad50d78a8edf&hd=3"
+                    },
+                    {
+                        id: "koryakov",
+                        name: "Коряков Николай Викторович",
+                        age: "49 лет",
+                        photo: "photos/Коряков.jpg",
+                        details: "191 / 54 / 45",
+                        extra: "",
+                        filmLink: "",
+                        videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239085&hash=50e8569807fc4154&hd=3"
+                    },
+                    {
+                        id: "pigin",
+                        name: "Пигин Александр",
+                        age: "40 лет",
+                        photo: "photos/Пигин.jpg",
+                        details: "Рост 168 / вес 78 кг / обувь 40 / одежда 48-50",
+                        extra: "",
+                        filmLink: "",
+                        videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239084&hash=899c23412b6d6ca0&hd=3"
+                    },
+                    {
+                        id: "kyussner",
+                        name: "Кюсснер Дмитрий",
+                        age: "",
+                        photo: "photos/Кюсснер.jpg",
+                        details: "Рост 185 / одежда 50 / обувь 44",
+                        extra: "",
+                        filmLink: "",
+                        videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239087&hash=0cb53eee10a66ce8&hd=4"
+                    },
+                    {
+                        id: "zhezhel",
+                        name: "Жежель Кирилл",
+                        age: "22 года",
+                        photo: "photos/Жежель.jpg",
+                        details: "",
+                        extra: "",
+                        filmLink: "",
+                        videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239083&hash=ac4262c9945274d4&hd=3"
+                    },
+                    {
+                        id: "volkov",
+                        name: "Волков Виктор",
+                        age: "",
+                        photo: "photos/Волков.jpg",
+                        details: "",
+                        extra: "",
+                        filmLink: "",
+                        videoUrl: "https://vkvideo.ru/video_ext.php?oid=-221927186&id=456239086&hash=07580bba7a1d7346&hd=3"
+                    }
+                ],
                 scene: {
                     title: "4-34 / 4-36. УСАДЬБА ЛЕСКОВА",
                     content: `<div class="scene-action">«Каблучок» Олега стоит у чёрного входа. Олег достаёт из машины ящик, несёт в подвал.</div>
@@ -1028,7 +1277,48 @@
                 series: 4,
                 dates: ["26.06"],
                 approvedProbeId: null,
-                probes: [],
+                probes: [
+                    {
+                        id: "nekrasov",
+                        name: "Некрасов Богдан",
+                        age: "",
+                        photo: "photos/Некрасов.jpg",
+                        details: "Рост 178 / размер 50 / обувь 43",
+                        extra: "",
+                        filmLink: "",
+                        videoUrl: "https://vkvideo.ru/video-221927186_456239112?list=ln-hhDiq1uvnDoK7eg1qd"
+                    },
+                    {
+                        id: "andrianov",
+                        name: "Андрианов Александр",
+                        age: "33 года",
+                        photo: "photos/Андрианов.jpg",
+                        details: "177 / 56 / 43",
+                        extra: "",
+                        filmLink: "",
+                        videoUrl: "https://vkvideo.ru/video-221927186_456239111?list=ln-gRASXQeilxZtKOozmE"
+                    },
+                    {
+                        id: "nikulin",
+                        name: "Никулин Андрей",
+                        age: "46 лет",
+                        photo: "photos/Никулин.jpg",
+                        details: "189 / 56 / 45",
+                        extra: "",
+                        filmLink: "",
+                        videoUrl: "https://vkvideo.ru/video-221927186_456239110?list=ln-CVDKWRo6WnQesVRYyz"
+                    },
+                    {
+                        id: "merkulov",
+                        name: "Меркулов Олег",
+                        age: "",
+                        photo: "photos/Меркулов.jpg",
+                        details: "Рост 187 / одежда 54-56 / обувь 44-45",
+                        extra: "",
+                        filmLink: "",
+                        videoUrl: "https://vkvideo.ru/video-221927186_456239109?list=ln-06d9P27MyTGWlZinxr"
+                    }
+                ],
                 scene: {
                     title: "4-33. УСАДЬБА ЛЕСКОВА. ДЕНЬ 12",
                     content: `<div class="scene-action">«Каблучок» Олега подъезжает к воротам усадьбы.</div>
@@ -1112,6 +1402,8 @@
                     if (contact.type === 'phone') {
                         const cleanPhone = formatPhoneForLink(contact.value);
                         html += `<a href="tel:${cleanPhone}" class="approved-contact-btn">📞 ${contact.value}</a>`;
+                    } else if (contact.type === 'telegram') {
+                        html += `<a href="https://t.me/${contact.value.replace('@', '')}" target="_blank" class="approved-tg-btn">✈️ ${contact.value}</a>`;
                     }
                 }
                 
@@ -1141,6 +1433,46 @@
                 isApprovedExpanded = true;
             }
         });
+
+        function renderExtras() {
+            const container = document.getElementById('extrasContainer');
+            const extras = [];
+            for (const [charName, charData] of Object.entries(CHARACTERS_DB)) {
+                if (charData.series === 0) {
+                    extras.push({ name: charName, data: charData });
+                }
+            }
+            if (extras.length === 0) {
+                container.innerHTML = '';
+                return;
+            }
+            let html = `<div class="series-section-title" style="margin-top:0;">🎬 Вне серий</div><div class="series-grid">`;
+            for (const ext of extras) {
+                const datesHtml = ext.data.dates && ext.data.dates.length > 0 ? `<div class="character-dates">${ext.data.dates.map(d => `<span class="date-badge">📅 ${d}</span>`).join('')}</div>` : '';
+                html += `
+                    <div class="series-card">
+                        <div class="card-header">
+                            <div class="series-number">
+                                ${escapeHtml(ext.name)}
+                            </div>
+                        </div>
+                        <div class="characters-list">
+                            <div class="character-items">
+                                <li class="character-item" data-char="${escapeHtml(ext.name)}">
+                                    <div class="character-name">${escapeHtml(ext.name)}</div>
+                                    ${datesHtml}
+                                </li>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+            html += `</div>`;
+            container.innerHTML = html;
+            document.querySelectorAll('#extrasContainer .character-item').forEach(el => {
+                el.addEventListener('click', () => openCharacterModal(el.getAttribute('data-char')));
+            });
+        }
 
         function getCharactersBySeries(seriesNum) {
             const result = [];
@@ -1193,7 +1525,7 @@
             }
             html += `</div>`;
             container.innerHTML = html;
-            document.querySelectorAll('.character-item').forEach(el => {
+            document.querySelectorAll('#seriesContainer .character-item').forEach(el => {
                 el.addEventListener('click', () => openCharacterModal(el.getAttribute('data-char')));
             });
         }
@@ -1216,6 +1548,7 @@
                     const isApproved = charData.approvedProbeId === probe.id;
                     const approvedMark = isApproved ? '<span class="approved-tag">✅ Утверждён</span>' : '';
                     const filmLinkHtml = probe.filmLink ? `<a href="${escapeHtml(probe.filmLink)}" target="_blank" class="probe-film-link">🎬 Фильмография</a>` : '';
+                    const videoBtnHtml = probe.videoUrl && probe.videoUrl.trim() !== '' ? `<button class="watch-video-btn" data-video="${escapeHtml(probe.videoUrl)}">🎥 Смотреть видео</button>` : '';
                     probesHtml += `
                         <div class="probe-card ${isApproved ? 'approved-card' : ''}">
                             <div class="probe-photo">
@@ -1226,7 +1559,7 @@
                             ${probe.details ? `<div class="probe-details">${escapeHtml(probe.details)}</div>` : ''}
                             ${probe.extra ? `<div class="probe-desc">${escapeHtml(probe.extra)}</div>` : ''}
                             ${filmLinkHtml}
-                            <button class="watch-video-btn" data-video="${escapeHtml(probe.videoUrl || '')}">🎥 Смотреть пробу</button>
+                            ${videoBtnHtml}
                         </div>
                     `;
                 }
@@ -1236,7 +1569,7 @@
             
             modalContent.innerHTML = `
                 <div class="modal-title">🎭 ${escapeHtml(characterName)}</div>
-                <div class="modal-subtitle">${charData.dates.length > 0 ? `📅 Даты съёмок: ${charData.dates.join(', ')}` : '📅 Даты съёмок пока не указаны'}</div>
+                <div class="modal-subtitle">${charData.dates.length > 0 ? `📅 Даты съёмок: ${charData.dates.join(', ')}` : ''}</div>
                 ${sceneHtml}
                 ${probesHtml}
             `;
@@ -1272,6 +1605,8 @@
             const container = document.getElementById('videoIframeContainer');
             let embedUrl = videoUrl;
             if (videoUrl.includes('vkvideo.ru')) {
+                embedUrl = videoUrl;
+            } else if (videoUrl.includes('vk.com/video_ext.php')) {
                 embedUrl = videoUrl;
             } else if (videoUrl.includes('yandex.net')) {
                 embedUrl = videoUrl;
@@ -1355,6 +1690,7 @@
 
         function init() {
             renderApprovedActors();
+            renderExtras();
             renderSeries();
         }
         init();
